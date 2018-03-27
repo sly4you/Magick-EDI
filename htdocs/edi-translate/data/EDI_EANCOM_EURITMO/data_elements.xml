@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<data_elements>
+    <data_element id="1001" name="documentType" desc="Document type" type="a" maxlength="6"/>
+    <data_element id="1004" name="documentNumber" desc="Document number" type="a" maxlength="35"/>
+    <data_element id="1082" name="rowNumber" desc="Progressive row number" type="n" maxlength="6"/>
+    <data_element id="1153" name="referenceNumberQualifier" desc="Main qualifier" type="a" maxlength="3"/>
+    <data_element id="1154" name="referenceNumber" desc="Reference document number" type="a" maxlength="35"/>
+    <data_element id="2009" name="timeRelationCoded" desc="Code relating payment terms to a time before, on or after the reference date."     type="an" maxlength="3"/>
+    <data_element id="2151" name="typeOfPeriodCoded" desc="Agreed or specified period of time (coded)." type="an" maxlength="3"/>
+    <data_element id="2152" name="numberOfPeriods" desc="Number of periods of the type indicated in data element 2151 Type of period, coded." type="n" maxlength="3"/>
+    <data_element id="2379" name="dateTimeQualifierReference" desc="Reference date/time qualifier" type="n" maxlength="3"/>
+    <data_element id="2380" name="referenceNumberDate" desc="Reference number date (CCYYMMDD)" type="a" maxlength="35"/>
+    <data_element id="2475" name="paymentTimeReferenceCoded" desc="Code relating payment terms to the date of a specific event." type="an" maxlength="3"/>
+    <data_element id="3039" name="partyIdIdentification" desc="Code identifying a party involved in a transaction." type="a" maxlength="35"/>
+    <data_element id="3127" name="carrierIdentifier" desc="Carrier identifier" type="a" maxlength="17"/>
+    <data_element id="3164" name="nadCity" desc="City" type="a" maxlength="35"/>
+    <data_element id="3207" name="nadCountryCode" desc="Country code" type="a" maxlength="3"/>
+    <data_element id="3251" name="nadZip" desc="ZIP code" type="a" maxlength="9"/>
+    <data_element id="3227" name="deliveryPointIDCode" desc="Delivery point identification code" type="a" maxlength="17"/>
+    <data_element id="4055" name="deliveryCondition" desc="Delivery conditions code" type="a" maxlength="3"/>
+    <data_element id="4215" name="deliveryCost" desc="Delivery costs and way of payment" type="a" maxlength="3"/>
+    <data_element id="4279" name="paymentTermsTypeQualifier" desc="Identification of the type of payment terms." type="an" maxlength="3"/>
+    <data_element id="4439" name="paymentConditionsCoded" desc="Identification of the method employed or to be employed in order that a payment may be made or regarded as made. The method may or may not be tied to a guarantee." type="an" maxlength="3"/>
+    <data_element id="5125" name="priceQualifier" desc="Identification of a type of price." type="an" maxlength="3"/>
+    <data_element id="5278" name="dutytaxfeeRate" desc="Rate of duty or tax or fee applicable to commodities or of tax
+    applicable to services. (3int+4dec)" type="n" maxlength="7"/>
+    <data_element id="5305" name="dutytaxfeeCategoryCoded" desc="Code identifying a tax/duty/fee category within a tax/duty/fee type system." type="an" maxlength="3"/>
+    <data_element id="5495" name="sublineIndicatorCoded" desc="Indication that the segment and/or segment group is used for sub-line item information." type="an" maxlength="3"/>
+    <data_element id="7008" name="itemDescription" desc="Plain language description of articles or products." type="an" maxlength="175"/>
+    <data_element id="7140" name="articleSKU" desc="Article code (SKU)" type="a" maxlength="35"/>
+    <data_element id="7143" name="itemNumberTypeCoded" desc="Identification of the type of item number." type="an" maxlength="3"/>
+    <data_element id="9001" name="applicationIdentifierInformation" desc="Application identifier informations" type="a" maxlength="3"/>
+    <data_element id="9004" name="articleCode" desc="Article label code" type="a" maxlength="35"/>
+    <data_element id="9005" name="deliveryConditionShipping" desc="Delivery conditions and shipping" type="a" maxlength="3"/>
+    <data_element id="9010" name="TUarticleSKU" desc="TU's article code (SKU)" type="a" maxlength="35"/>
+    <data_element id="9011" name="forCode" desc="Buyer assigned code" type="a" maxlength="35"/>
+    <data_element id="9012" name="distCode" desc="Distributor assigned code" type="a" maxlength="35"/>
+    <data_element id="4461" name="paymentMeansCoded" desc="Indication of the instrument of payment, which may include a guarantee." type=    "an" maxlength="3"/>
+    <data_element id="9014" name="documentDate" desc="Document date (CCYYMMDD)" type="n" maxlength="8"/>
+    <data_element id="9017" name="articleDescription" desc="Article description" type="a" maxlength="35"/>
+    <data_element id="9018" name="deliveryConditionDescription1" desc="Delivery or shipping condition description" type="a" maxlength="70"/>
+    <data_element id="9019" name="deliveryConditionDescription2" desc="Delivery or shipping condition description" type="a" maxlength="70"/>
+    <data_element id="9020" name="carrierDescription" desc="Carrier description" type="a" maxlength="35"/>
+    <data_element id="8101" name="transportDirection" desc="Transport direction" type="a" maxlength="3"/>
+    <data_element id="9022" name="priceCurrency" desc="Price currency (default EUR, table ISO4217)" type="a" maxlength="3"/>
+    <data_element id="9023" name="recipientEdiIdentificator" desc="Recipient EDI identificator" type="a" maxlength="35"/>
+    <data_element id="9024" name="recipientEdiIdentificatorQualifier" desc="Qualifier for recipient identificator" type="a" maxlength="4"/>
+    <data_element id="9025" name="recipientEdiIdentificatorReverse" desc="Reverse routine identifier for recipient" type="a" maxlength="14"/>
+    <data_element id="9026" name="senderEdiIdentificator" desc="Sender EDI identificator" type="a" maxlength="35"/>
+    <data_element id="9027" name="senderEdiIdentificatorQualifier" desc="Qualifier for sender identificator" type="a" maxlength="4"/>
+    <data_element id="9028" name="senderEdiIdentificatorReverse" desc="Reverse routine identifier for sender" type="a" maxlength="14"/>
+    <data_element id="8179" name="transportMeanId" desc="Mean of transport id number" type="a" maxlength="8"/>
+    <data_element id="8213" name="meansIdentification" desc="Means of transport id numbers" type="a" maxlength="9"/>
+    <data_element id="9032" name="subRowId" desc="Subrow identifier (value 1 if this is a subrow)" type="a" maxlength="3"/>
+    <data_element id="9033" name="nadAddress" desc="Address" type="a" maxlength="70"/>
+    <data_element id="9034" name="transportMode" desc="Transport mode" type="a" maxlength="3"/>
+    <data_element id="8453" name="transportMeanNationality" desc="Mean of transport nationality (ISO-3166 code)" type="a" maxlength="3"/>
+    <data_element id="9037" name="cuNumberInTU" desc="Number of CU included into TU" type="n" maxlength="15"/>
+    <data_element id="9040" name="subrowNumber" desc="Progressive subrow number" type="n" maxlength="6"/>
+    <data_element id="9042" name="transportReferenceNumber" desc="Transport document number" type="a" maxlength="17"/>
+    <data_element id="9043" name="documentTime" desc="Document time" type="n" maxlength="4"/>
+    <data_element id="9044" name="referenceNumberTime" desc="Reference number time (HHMM)" type="n" maxlength="4"/>
+    <data_element id="3229" name="nadProvince" desc="Province" type="a" maxlength="9"/>
+    <data_element id="9046" name="rowPrice" desc="Row price (DE 5004)" type="n" maxlength="18"/>
+    <data_element id="9047" name="orderRowPrice" desc="Row price (orders)" type="n" maxlength="15"/>
+    <data_element id="9048" name="deliveryPointCodeType" desc="Delivery point code type" type="a" maxlength="3"/>
+    <data_element id="9049" name="orderRefNumber" desc="Reference order number" type="a" maxlength="35"/>
+    <data_element id="9050" name="orderRefDate" desc="Reference order date" type="n" maxlength="8"/>
+    <data_element id="9051" name="orderRefTime" desc="Reference order time" type="n" maxlength="4"/>
+    <data_element id="9052" name="orderProposalSupplierNumber" desc="Supplier order proposal number" type="a" maxlength="35"/> is info
+    <data_element id="9059" name="orderProposalBuyerNumber" desc="Buyer order proposal number" type="a" maxlength="35"/>
+    <data_element id="2005" name="dateTimeQualifier" desc="Date/time qualifier" type="n" maxlength="3"/>
+    <data_element id="8051" name="transportQualifier" desc="Transport qualifier" type="a" maxlength="3"/>
+    <data_element id="6060" name="quantity" desc="Numeric value of a quantity." type="n" maxlength="15"/>
+    <data_element id="6345" name="currencyCoded" desc="Identification of the name or symbol of the monetary unit involved in the transact    ion." type="an" maxlength="3"/>
+    <data_element id="9053" name="nadName" desc="Name" type="a" maxlength="70"/>
+    <data_element id="9054" name="appIdentifier" desc="Application identifier" type="a" maxlength="10"/>
+    <data_element id="9055" name="lotNumber" desc="Lot number" type="a" maxlength="35"/>
+    <data_element id="9056" name="refQualifier" desc="Ref qualifier (DE 5025)" type="a" maxlength="3"/>
+    <data_element id="9057" name="articleCodeType" desc="Article label code type" type="a" maxlength="3"/>
+    <data_element id="9058" name="articleCodeCUType" desc="CU code type (EAN/UCC or UPC)" type="a" maxlength="3"/>
+    <data_element id="8178" name="transportMeanKind" desc="Mean of transport kind and type" type="a" maxlength="17"/>
+    <data_element id="9001" name="recordType" desc="Record code" type="a" maxlength="3"/>
+    <data_element id="6069" name="totalQualifier" desc="Total qualifier" type="a" maxlength="3"/>
+    <data_element id="9062" name="cessionType" desc="Cession type" type="a" maxlength="3"/>
+    <data_element id="9064" name="traceabilityType" desc="Traceability type" type="a" maxlength="3"/>
+    <data_element id="6066" name="totalValue" desc="Total value" type="n" maxlength="15"/>
+    <data_element id="9066" name="cuNumberInTUUM" desc="Number of CU included into TU's UM" type="a" maxlength="3"/>
+    <data_element id="9067" name="unitOfMeasurement" desc="Quantity's unit of measurement" type="a" maxlength="3"/>
+    <data_element id="6411" name="unitOfMeasurement" desc="Quantity's unit of measurement" type="a" maxlength="3"/>
+    <data_element id="3035" name="partQualifier" desc="Part qualifier" type="a" maxlength="3"/>
+    <data_element id="9063" name="registrationCourt" desc="Court where the registration was made" type="a" maxlength="35"/>
+    <data_element id="9065" name="promotionalOrderFlag" desc="Promotional row flag" type="a" maxlength="3"/>
+    <data_element id="9061" name="importExportLicense" desc="Import/Export license number" type="a" maxlength="35"/>
+    <data_element id="9068" name="cciaaRegNo" desc="CCIAA registration number" type="a" maxlength="35"/>
+    <data_element id="9069" name="equityAmount" desc="Equity (capitale sociale)" type="a" maxlength="35"/>
+    <data_element id="9070" name="taxCode" desc="Tax Code (codice fiscale)" type="a" maxlength="35"/>
+    <data_element id="9071" name="internationalVAT" desc="International VAT number" type="a" maxlength="35"/>
+    <data_element id="9072" name="phoneNo" desc="Phone number" type="a" maxlength="25"/>
+    <data_element id="9073" name="telefaxNo" desc="Fax number" type="a" maxlength="25"/>
+    <data_element id="9074" name="telexNo" desc="Telex number" type="a" maxlength="25"/>
+    <data_element id="9075" name="emailAddr" desc="Email address" type="a" maxlength="70"/>
+    <data_element id="9076" name="VATnumber" desc="VAT number" type="a" maxlength="35"/>
+    <data_element id="9077" name="notes" desc="Notes" type="a" maxlength="350"/>
+    <data_element id="9078" name="dateTimeReference" desc="Date/time reference period" type="n" maxlength="8"/>
+    <data_element id="9079" name="paymentAmount" desc="Payment amount" type="n" maxlength="16"/>
+    <data_element id="9080" name="PATpercentage" desc="Percentage (3int+4dec)" type="n" maxlength="7"/>
+    <data_element id="9081" name="PATPaymentDescription" desc="Payment description" type="n" maxlength="35"/>
+    <data_element id="9082" name="bankID" desc="Bank reference (ABI,5-CAB,5-ACC.NR,23 / use - as separator)" type="a" maxlength="35"/>
+    <data_element id="9083" name="bankDescription" desc="Bank reference (description)" type="a" maxlength="35"/>
+    <data_element id="9084" name="factor" desc="Factoring" type="a" maxlength="35"/>
+    <data_element id="9085" name="quantityWithSign" desc="Quantity with sign (sign+12int+3dec)" type="a" maxlength="16"/>
+    <data_element id="9086" name="refTypeCredCharge" desc="Referenc type for credit note or charge" type="a" maxlength="3"/>
+    <data_element id="9087" name="vatType" desc="VAT type" type="a" maxlength="3"/>
+    <data_element id="9088" name="vatDescription" desc="VAT description" type="a" maxlength="35"/>
+    <data_element id="9089" name="taxAmount" desc="Quantity with sign (sign+12int+3dec)" type="a" maxlength="16"/>
+    <data_element id="9090" name="discountChargeIndicator" desc="Discount/Charge indicator" type="a" maxlength="3"/>
+    <data_element id="9091" name="amountDescription" desc="Amount description" type="a" maxlength="35"/>
+    <data_element id="9092" name="calcSequenceIndicator" desc="Calc sequence indicator" type="n" maxlength="3"/>
+    <data_element id="9093" name="discountChargeCode" desc="Discount/Charge type" type="a" maxlength="6"/>
+    <data_element id="9094" name="discountFlag" desc="Flag indicating the base application of the discount" type="a" maxlength="3"/>
+    <data_element id="9095" name="deliveryDocumentRefNum" desc="Delivery document number" type="a" maxlength="35"/>
+    <data_element id="9096" name="referenceNumberDate" desc="Reference number date (CCYYMMDD)" type="n" maxlength="8"/>
+    <data_element id="9097" name="orderRefNum" desc="Order number" type="a" maxlength="35"/>
+    <data_element id="9098" name="orderReferenceNumberDate" desc="Reference number date (CCYYMMDD)" type="n" maxlength="8"/>
+    <data_element id="9099" name="noteQualifier" desc="Note qualifier" type="a" maxlength="3"/>
+    <data_element id="9100" name="documentTotal" desc="Document total (sign+12int+3dec)" type="n" maxlength="16"/>
+    <data_element id="9101" name="taxTotal" desc="Tax total (sign+12int+3dec)" type="n" maxlength="16"/>
+    <data_element id="9102" name="taxableTotal" desc="Taxable total (sign+12int+3dec)" type="n" maxlength="16"/>
+    <data_element id="9103" name="rowTotal" desc="Row amount total (sign+12int+3dec)" type="n" maxlength="16"/>
+    <data_element id="9104" name="advanceCreditTotal" desc="Advance or accredit total (sign+12int+3dec)" type="n" maxlength="16"/>
+    <data_element id="9105" name="netTotalToPay" desc="Net total to pay (sign+12int+3dec)" type="n" maxlength="16"/>
+    <data_element id="9106" name="goodsTotal" desc="Goods total (sign+12int+3dec)" type="n" maxlength="16"/>
+    <data_element id="9107" name="actionCode" desc="Action code upon confirmation" type="a" maxlength="3"/>
+    <data_element id="9108" name="confirmedQuantity" desc="Confirmed quantity (12+3)" type="n" maxlength="15"/>
+    <data_element id="9109" name="notes" desc="Notes" type="a" maxlength="140"/>
+    <data_element id="9110" name="totalNumberOfRows" desc="Number of rows in the document (12+3)" type="n" maxlength="15"/>
+</data_elements>

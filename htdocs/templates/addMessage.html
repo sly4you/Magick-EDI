@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/public.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/ajax-common.js"></script>
+<script type="text/javascript" src="js/ajax-modal.js"></script>
+<title>Magick Edi</title>
+</head>
+<body>
+<div id="main">
+  <!-- BEGIN: main -->
+  <form name="message" id="message">
+  <div id="message-detail" class="content-body" style="width:616px;">
+    <div id="message-header">
+      <input type="hidden" name="message_from" id="message_from" value="{USER_DATA.user_id}" />
+      <div class="message-header" style="width: 100px;float:left;">Mittente:</div>
+      <div class="message-header" style="width: 470px;margin:0 0 0 4px;float:left;">{USER_DATA.org_name|STRIPSLASHES}</div>
+      <div style="clear:both;"></div>
+      <div class="message-header" style="width: 100px;float:left;">Destinatario:</div>
+      <div style="float:left">
+        <select class="x-form-field-small" name="message_to" id="message_to" style="width: 470px;height:19px;margin:0 0 0 4px;" onchange="setTranslate();"/>
+          <!-- BEGIN: singlePartner -->
+          <option value="{PARTNER.partner_id}" {PARTNER.selected} >{PARTNER.partner_org_name}</option>
+          <!-- END: singlePartner -->
+        </select>
+      </div>
+    </div>
+    <div style="clear:both;"></div>
+    <div class="message-header" style="width: 100px;float:left;">Data:</div>
+    <div style="float:left">
+      <input class="x-form-field-small" type="text" name="message_date" id="message_date" value="{MESSAGE_DETAIL.message_date|stripslashes}" style="width: 470px;margin:0 0 0 4px;" />
+    </div>
+    <div style="clear:both;"></div>
+    <div class="message-header" style="width: 100px;float:left;">Oggetto:</div>
+    <div style="float:left">
+      <input class="x-form-field-small" type="text" name="message_subject" id="message_subject" value="{MESSAGE_DETAIL.message_subject|stripslashes}" style="width: 470px;margin:0 0 0 4px;" />
+      <!-- BEGIN: errorSubject -->
+      <br /><div class="error">{ERROR_SUBJECT}</div>
+      <!-- END: errorSubject -->
+    </div>
+    <div style="clear:both;"></div>
+    <div class="message-header" style="width: 100px;float:left;">Traduci messaggio:</div>
+    <div style="float:left; text-align: left;">
+      <input type="checkbox" name="message_translate" id="message_translate" value="1" style="margin: 4px 0 0 4px;"/>
+    </div>
+    <div style="clear:both;"></div>
+    <div style="width:616px;height: 280px;border: 1px solid #B7C8D7; margin: 0 0 2px 0; font-size:11px; background-color: #FFFFFF;">
+      <textarea name="message_content" id="message_content" style="width:100%;height:100%;border:none;">{MESSAGE_DETAIL.message_content}</textarea>
+      <!-- BEGIN: errorContent -->
+      <div class="error">{ERROR_CONTENT}</div>
+      <!-- END: errorContent -->
+      <!-- BEGIN: errorSend -->
+      <div class="error">{ERROR_SEND}</div>
+      <!-- END: errorSend -->
+    </div>
+    <div id="save-new-partner">
+      <label>
+        <input class="x-btn-text" style="float:right;" type="button" name="Spedisci" id="Spedisci" value="Spedisci" onClick="sendAjaxPopupWinForm(this.form.name, 'chapter=mbox&ac=send', 'popupFrame');"/>
+      </label>
+    </div>
+  </div>
+  </form>
+  <!-- END: main -->
+</div>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/public.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/ajax-common.js"></script>
+<script type="text/javascript" src="js/ajax-modal.js"></script>
+<title>Magick Edi</title>
+</head>
+<body>
+<div id="main">
+<div id="content">
+  <!-- BEGIN: main -->
+  <!-- BEGIN: partnerDetail -->
+    <div id="partner-detail-loader" class="content-loader">
+      Loading, please wait....
+  </div>
+    <!-- BEGIN: jsAlert -->
+	<script type="text/javascript">
+	 alert( "Sorry, partner not found" );
+	</script>
+    <!-- END: jsAlert -->
+   <div id="partner-detail">
+   <div id="partner-title" class="content-title" style="margin-top: 2px;">Dettaglio Partner</div>
+   <div id="partner-content" class="content-body">
+   <fieldset class="detail-fieldset">
+     <legend class="detail-fieldset-legend">Anagrafica</legend>
+     <div class="detail-fieldset-div">
+       <div class="detail-fieldset-div-one">Ragione Sociale:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_org_name" id="partner_org_name" value="{PARTNER_DETAIL.partner_org_name|stripslashes}"/>
+         </label>
+       </div>
+       <div class="detail-fieldset-div-one">Email:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_email" id="partner_email" value="{PARTNER_DETAIL.partner_email|stripslashes}"/>
+         </label>
+       </div>
+       <div style="clear:both;"></div>
+       <div class="detail-fieldset-div-one">Formato EDI:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <select class="x-form-field-left" name="partner_edi_format" id="partner_edi_format">
+             <option value="">Non specificato</option>
+             <option value="EANCON-EURITMO">EANCON-EURITMO</option>
+             <option value="EDIFACT-D97A">EDIFACT-D97A</option>
+             <option value="EDIFACT-D96B">EDIFACT-D96B</option>
+           </select>
+         </label>
+       </div>       
+       <div class="detail-fieldset-div-one">Connettore:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <select class="x-form-field-left" name="partner_connector" id="partner_connector" onchange="getAjaxContent ( 'chapter=partner&ac=changeConnector&connector=' + this.options[this.selectedIndex].value, 'partner-connector' )">
+             <option value="AS2">AS2</option>
+             <option value="HTTP">HTTP</option>
+             <!-- <option value="OFTP2">OFTP2</option> -->
+             <option value="SMTP">SMTP</option>
+           </select>
+         </label>
+       </div>
+       <div style="clear:both;"></div>
+     </div>
+   </fieldset>
+   <div id="continue">
+     
+   </div>
+   </div>
+   <!-- END: partnerDetail -->
+   <!-- BEGIN: partnerConnector -->
+   <div id="partner-connector">
+     <!-- BEGIN: AS2 -->
+     <div id="partner-title" class="content-title" style="margin-top: 2px;"> Dettaglio Connettore</div>
+     <div id="partner-connector-content" class="content-body">
+       <fieldset class="detail-fieldset">
+         <legend class="detail-fieldset-legend">Parametri AS2</legend>
+         <div class="detail-fieldset-div">
+           <div class="detail-fieldset-div-one">Nome Partner:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="partner_name" id="partner_name" value="{PARTNER_CONNECTOR.partner_name|stripslashes}"/>
+             </label>
+           </div>
+           <div class="detail-fieldset-div-one">Tipo di Partner:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <select class="x-form-field-left" name="partner_type" id="partner_type">
+                 <option value="{PARTNER_CONNECTOR.partner_type}">Locale</option> 
+                 <option value="{PARTNER_CONNECTOR.partner_type}">Remoto</option> 
+               </select>
+             </label>
+           </div>
+           <div style="clear:both;"></div>
+           <div class="detail-fieldset-div-one">Certificato pkcs12:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="file" name="partner_sec_pkcs12" id="partner_sec_pkcs12" value="{PARTNER_CONNECTOR.partner_sec_pkcs12|stripslashes}"/>
+             </label>
+           </div>       
+           <div class="detail-fieldset-div-one">Password pkcs12:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="partner_sec_pkcs12_password" id="partner_sec_pkcs12_password" value="{PARTNER_CONNECTOR.partner_sec_pkcs12_password|stripslashes}"/>
+             </label>
+           </div>
+           <div style="clear:both;"><br /></div>
+           <div class="detail-fieldset-div-one">Certificato:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="file" name="partner_sec_pkcs12" id="partner_sec_pkcs12" value="{PARTNER_CONNECTOR.partner_sec_certificate|stripslashes}"/>
+             </label>
+           </div>
+           <div style="clear:both;"></div>
+           <div class="detail-fieldset-div-one">Security signature:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="partner_sec_signature_algorithm" id="partner_sec_signature_algorithm" value="{PARTNER_CONNECTOR.partner_sec_signature_algorithm|stripslashes}"/>
+             </label>
+           </div>       
+           <div class="detail-fieldset-div-one">Security Algoritm:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="partner_sec_encrypt_algoritm" id="partner_sec_encrypt_algoritm" value="{PARTNER_CONNECTOR.partner_sec_encrypt_algoritm|stripslashes}"/>
+             </label>
+           </div>
+           <div style="clear:both;"><br /></div>
+           <div class="detail-fieldset-div-one">Url:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="partner_send_url" id="partner_send_url" value="{PARTNER_CONNECTOR.partner_send_url|stripslashes}"/>
+             </label>
+           </div>       
+           <div class="detail-fieldset-div-one">Autenticazione:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <select class="x-form-field-left" name="partner_send_credencial_method" id="partner_send_credencial_method">
+                 <option value="">Nessuna</option> 
+                 <option value="">Http Authentication</option> 
+               </select>
+             </label>
+           </div>
+           <div style="clear:both;"></div>
+           <div class="detail-fieldset-div-one">Username:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="partner_send_credencial_login" id="partner_send_credencial_login" value="{PARTNER_CONNECTOR.partner_send_credencial_login|stripslashes}"/>
+             </label>
+           </div>       
+           <div class="detail-fieldset-div-one">Password:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="partner_send_credencial_password" id="partner_send_credencial_password" value="{PARTNER_CONNECTOR.partner_send_credencial_password|stripslashes}"/>
+             </label>
+           </div>
+           <div style="clear:both;"><br /></div>
+           <div class="detail-fieldset-div-one">MDN:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="partner_mdn_request" id="partner_mdn_request" value="{PARTNER_CONNECTOR.partner_mdn_request|stripslashes}"/>
+             </label>
+           </div>       
+           <div style="clear:both;"></div>
+         </div>
+       </fieldset>
+     <!-- END: AS2 -->
+     <!-- BEGIN: HTTP -->
+     <div id="partner-title" class="content-title" style="margin-top: 2px;"> Dettaglio Connettore</div>
+     <div id="partner-connector-content" class="content-body">
+       <fieldset class="detail-fieldset">
+         <legend class="detail-fieldset-legend">Parametri HTTP</legend>
+         <div class="detail-fieldset-div">
+           <div class="detail-fieldset-div-one">Protocollo:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <select class="x-form-field-left" name="http_protocol" id="http_protocol">
+                 <option value="http">HTTP</option>
+                 <option value="https">HTTPS</option>
+               </select>
+             </label>
+           </div>
+           <div style="clear:both;"></div>
+           <div class="detail-fieldset-div-one">Url:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="partner_url" id="partner_url" value="{PARTNER_CONNECTOR.partner_url|stripslashes}"/>
+             </label>
+           </div>       
+           <div class="detail-fieldset-div-one">Metodo:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <select class="x-form-field-left" name="http_method" id="http_method">
+                 <option value="GET">GET</option>
+                 <option value="POST">POST</option>
+               </select>
+             </label>
+           </div>
+           <div style="clear:both;"><br /></div>
+           <div class="detail-fieldset-div-one">Autenticazione:</div>
+           <div class="detail-fieldset-div-two">
+             <select class="x-form-field-left" name="http_credencial" id="http_credencial">
+               <option value="">Nessuna</option>
+               <option value="">Http Authentication</option>
+             </select>
+           </div>
+           <div style="clear:both;"></div>
+           <div class="detail-fieldset-div-one">Username:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="http_login" id="http_login" value="{PARTNER_CONNECTOR.http_login|stripslashes}"/>
+             </label>
+           </div>       
+           <div class="detail-fieldset-div-one">Password:</div>
+           <div class="detail-fieldset-div-two">
+             <label>
+               <input class="x-form-field-left" type="text" name="partner_password" id="partner_password" value="{PARTNER_CONNECTOR.partner_password|stripslashes}"/>
+             </label>
+           </div>
+           <div style="clear:both;"></div>
+         </div>
+       </fieldset>
+     <!-- END: HTTP -->
+     <!-- BEGIN: SMTP -->
+     <div id="partner-title" class="content-title" style="margin-top: 2px;"> Dettaglio Connettore</div>
+     <div id="partner-connector-content" class="content-body">
+       <fieldset class="detail-fieldset">
+         <legend class="detail-fieldset-legend">Parametri smtp</legend>
+         <div class="detail-fieldset-div">
+           <div class="detail-fieldset-div-one">E-mail Partner:</div>
+           <div class="detail-fieldset-div-two">
+             <input class="x-form-field-left" type="text" name="partner_url2" id="partner_url2" value="{PARTNER_CONNECTOR.partner_url|stripslashes}"/>
+           </div>
+           <div style="clear:both;"></div>
+         </div>
+       </fieldset>
+     <!-- END: SMTP -->
+     </div>
+     <div id="save-new-partner">
+       <label>
+     <input class="x-btn-text" style="float:right;" type="button" name="Salva" id="Salva" value="Salva" onClick="checkLogout();"/>
+   </label>
+     </div>
+   <!-- END: partnerConnector -->
+   </div>
+   <!-- END: main -->
+  </div>
+</div>
+</body>
+</html>

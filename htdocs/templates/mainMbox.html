@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/public.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/ajax-common.js"></script>
+<script type="text/javascript" src="js/ajax-modal.js"></script>
+<title>Magick Edi</title>
+</head>
+<body>
+<div id="main">
+  <div id="content">
+   <!-- BEGIN: main -->
+   <div id="mbox-left" style="width: 142px;margin: 0 2px 2px 0;float:left;">
+     <div id="content-title" class="content-title">Caselle Mbox</div>
+     <div id="mbox-box" style="border: 1px #8DB2E3 solid;">
+       <button name="inbox" id="inbox" class="button-mbox" onclick="getAjaxContent('chapter=mbox&ac=viewPartial&path=Inbox', 'mbox-right');">
+         <img src="images/inbox.png" /> Inbox
+       </button>
+       <button name="outbox" id="outbox" class="button-mbox" onclick="getAjaxContent('chapter=mbox&ac=viewPartial&path=Outbox', 'mbox-right');">
+         <img src="images/outbox.png" /> Sent
+       </button>
+     </div>
+   </div>
+   <div id="mbox-right" style="float:left;overflow:hidden;">
+     <!-- BEGIN: messages -->
+     <div id="content-title" class="content-title">Messaggi Edi</div>
+     <div id="content-body" class="content-body" style="float:left;">
+       <div id="content-list-header">
+          <ul id="content-list-header">
+            <li>
+              <button id="add" name="add" onClick="showPopWin('index.php?mode=ajax&chapter=mbox&ac=add')">
+                <img src="images/new_partner.gif" width="16" height="16" />           
+                Nuovo messaggio Edi
+              </button>
+            </li>
+            <li>
+              <button id="del" name="del" onClick="ajaxDelete('mbox', 'mbox-right')">
+                <img src="images/new_partner.gif" width="16" height="16" />           
+                Elimina Messaggio
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div id="content-list-body">
+          <div id="table-grid-title" style="width:160px;">Mittente</div>
+          <div id="table-grid-title" style="width:140px;">Oggetto</div>
+          <div id="table-grid-title" style="width:14px;">
+            <div id="msg-status" style="background: url(images/messageicons.png) -1px -119px;">&nbsp;</div>
+          </div>
+          <div id="table-grid-title" style="width:80px;">Connettore</div>
+          <div id="table-grid-title" style="width:120px;">Data</div>
+          <div id="table-grid-title" style="width:26px;"></div>
+          <div style="clear:both;"></div>
+          <!-- BEGIN: tableRow -->
+          <!-- BEGIN: rowWhite -->
+          <div class="table-grid-line-white" style="overflow:hidden;" onclick="getAjaxContent('chapter=mbox&ac=viewDetail&id={MESSAGE.message_id}', 'message-detail'); changeElementStatus('message', 'msg-status-{MESSAGE.message_id}', 'old');">
+            <div class="table-grid-content" style="width:160px;">{MESSAGE.message_from|stripslashes}</div>
+            <div class="table-grid-content" style="width:140px;">{MESSAGE.message_subject|stripslashes}</div>
+            <div class="table-grid-content" style="width:16px;">
+              <!-- BEGIN: old -->
+              <div id="msg-status-{MESSAGE.message_id}" class="message-old" >&nbsp;</div>
+              <!-- END: old -->
+              <!-- BEGIN: new -->
+              <div id="msg-status-{MESSAGE.message_id}" class="message-new" >&nbsp;</div>
+              <!-- END: new -->
+            </div>
+            <div class="table-grid-content" style="width:80px;">{MESSAGE.message_connector}</div>
+            <div class="table-grid-content" style="width:120px;">{MESSAGE.message_date}</div>
+            <div class="table-grid-content" style="width:28px;text-align:center">
+              <input type="checkbox" name="mbox[{MESSAGE.message_id}]" id="mbox[{MESSAGE.message_id}]" value="{MESSAGE.message_id}" />
+            </div>
+            <div style="clear: both;"></div>
+          </div>
+          <!-- END: rowWhite -->
+        <!-- BEGIN: rowGrey -->
+        <div class="table-grid-line-grey"  style="overflow:hidden;" onclick="getAjaxContent('chapter=mbox&ac=viewDetail&id={MESSAGE.message_id}', 'message-detail');  changeElementStatus('message', 'msg-status-{MESSAGE.message_id}', 'old');">
+            <div class="table-grid-content" style="width:160px;">{MESSAGE.message_from|stripslashes}</div>
+            <div class="table-grid-content" style="width:140px;">{MESSAGE.message_subject|stripslashes}</div>
+            <div class="table-grid-content" style="width:16px;">
+              <!-- BEGIN: old -->
+              <div id="msg-status-{MESSAGE.message_id}" class="message-old" >&nbsp;</div>
+              <!-- END: old -->
+              <!-- BEGIN: new -->
+              <div id="msg-status-{MESSAGE.message_id}" class="message-new" >&nbsp;</div>
+              <!-- END: new -->
+            </div>
+            <div class="table-grid-content" style="width:80px;">{MESSAGE.message_connector}</div>
+            <div class="table-grid-content" style="width:120px;">{MESSAGE.message_date}</div>
+            <div class="table-grid-content" style="width: 28px;text-align:center">
+              <input type="checkbox" name="mbox[{MESSAGE.message_id}]" id="mbox[{MESSAGE.message_id}]" value="{MESSAGE.message_id}" />
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <!-- END: rowGrey -->
+      <!-- END: taleRow -->
+    </div>
+    <div id="content-list-paginator">
+    </div>
+   </div>
+   <div style="clear:both;"></div>
+   <!-- BEGIN: messageDetail -->
+   <div id="partner-detail-loader" class="content-loader">
+     Loading, please wait....
+   </div>
+   <!-- BEGIN: jsAlert -->
+   <script type="text/javascript">
+     alert( "Sorry, message not found" );
+   </script>
+   <!-- END: jsAlert -->
+   <div id="message-detail" class="content-body">
+     <div id="message-header" style="border:">
+       <div style="border: 1px solid #B7C8D7; margin: 0 0 2px 0; padding: 2px; font-size:11px; background-color: #C2D8F0;">Oggetto: {MESSAGE_DETAIL.message_subject}</div>
+       <div style="border: 1px solid #B7C8D7; margin: 0 0 2px 0; padding: 2px; font-size:11px; background-color: #C2D8F0;">Mittente: {MESSAGE_DETAIL.message_from}</div>
+       <div style="border: 1px solid #B7C8D7; margin: 0 0 2px 0; padding: 2px; font-size:11px; background-color: #C2D8F0;">Destinatario: {MESSAGE_DETAIL.message_to}</div>
+       <div style="border: 1px solid #B7C8D7; margin: 0 0 2px 0; padding: 2px; font-size:11px; background-color: #C2D8F0;float:left;">Data: {MESSAGE_DETAIL.message_date}
+       </div>
+       <span style="float:right">
+         <a href="index.php?mode=ajax&chapter=mbox&ac=download&id={MESSAGE_DETAIL.message_id}">
+           <button name="download" id="download" >Download</button>
+         </a>
+       </span>
+       <div style="clear:both;"></div>
+     </div>
+     <div style="width:616px;min-height:150px; max-height: 280px;border: 1px solid #B7C8D7; margin: 0 0 2px 0; padding: 2px; font-size:11px; background-color: #FFFFFF; overflow:scroll;">{MESSAGE_DETAIL.message_content|nl2br}</div>
+   </div>
+   <!-- END: messageDetail -->
+   </div>
+   <!-- END: messages -->
+  </div>
+</div>
+<div style="clear:both;"></div>
+<!-- END: main -->
+</body>
+</html>

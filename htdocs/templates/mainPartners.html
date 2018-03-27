@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/public.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/ajax-common.js"></script>
+<script type="text/javascript" src="js/ajax-modal.js"></script>
+<title>Magick Edi</title>
+</head>
+<body>
+<div id="main">
+  <div id="header">
+    <div id="work-area-menu">
+      <div id="work-area-menu-title">
+        Area di Lavoro
+      </div>
+      <div id="work-area-menu-content">
+        <b>UTENTE:</b><br />
+        <span style="color:#FF0000">{CUSTOMER.first_name|stripslashes} {CUSTOMER.last_name|stripslashes}</span><br />
+        <b>EMAIL COMUNICAZIONI:</b><br />
+        <span style="color:#FF0000">{CUSTOMER.email}</span>
+      </div>
+    </div>
+    <div id="main-menu">
+      <div id="main-menu-title">Main Menu</div>
+      <div id="main-menu-content">
+        <ul id="main-menu">
+          <li><a href="#"><img src="images/btn_mbox_edi.gif" width="25" height="25" /><br />Edi Mbox</a></li>
+          <li><a href="#"><img src="images/btn_identifying.gif" width="24" height="24" /><br />Anagrafica</a></li>
+          <li><a href="#"><img src="images/btn_partners.gif" width="23" height="25" /><br />Partners</a></li>
+          <li><a href="Javascript: showPopWin( 'http://ediservices.lariotechnik.it/index.php?mode=ajax&ac=logout' );"><img src="images/btn_logout.gif" width="24" height="24" /><br />Logout</a></li>
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+  <div id="content">
+   <!-- BEGIN: main -->
+   <div id="content-title" class="content-title">Gestione Partners</div>
+   <div id="content-body" class="content-body">
+    <div id="content-list-header">
+      <ul id="content-list-header">
+        <li>
+          <button id="add" name="add" onClick="showPopWin('index.php?mode=ajax&chapter=partners&ac=add')">
+          <img src="images/new_partner.gif" width="16" height="16" />           
+          Inserisci nuovo Partner
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div id="content-list-body">
+      <div id="table-grid-title" style="width:80px;">Id</div>
+      <div id="table-grid-title" style="width:150px;">Ragione sociale</div>
+      <div id="table-grid-title" style="width:150px;">Email</div>
+      <div id="table-grid-title" style="width:100px;">Edi Format</div>
+      <div id="table-grid-title" style="width:80px;">Traduzione Auto</div>
+      <div id="table-grid-title" style="width:80px;">Connector Type</div>
+      <div id="table-grid-title" style="width:29px;"></div>
+      <div style="clear:both;"></div>
+      <!-- BEGIN: tableRow -->
+        <!-- BEGIN: rowWhite -->
+        <div class="table-grid-line-white" onclick="getAjaxContent('chapter=partner&ac=viewDetail&id={PARTNER.partner_id}', 'partner-detail');">
+          <div class="table-grid-content" style="width:80px;">{PARTNER.partner_id}</div>
+          <div class="table-grid-content" style="width:150px;">{PARTNER.partner_org_name|stripslashes}</div>
+          <div class="table-grid-content" style="width:150px;">{PARTNER.partner_email}</div>
+          <div class="table-grid-content" style="width:100px;">{PARTNER.partner_edi_format|stripslashes}</div>
+          <div class="table-grid-content" style="width:80px;">{PARTNER.partner_auto_translate|stripslashes}</div>
+          <div class="table-grid-content" style="width:80px;">{PARTNER.partner_connector|stripslashes}</div>
+          <div style="clear: both;"></div>
+        </div>
+        <!-- END: rowWhite -->
+        <!-- BEGIN: rowGrey -->
+        <div class="table-grid-line-grey" onclick="getAjaxContent('chapter=partner&ac=viewDetail&id={PARTNER.partner_id}', 'partner-detail');">
+          <div class="table-grid-content" style="width:80px;">{PARTNER.partner_id}</div>
+          <div class="table-grid-content" style="width:150px;">{PARTNER.partner_org_name|stripslashes}</div>
+          <div class="table-grid-content" style="width:150px;">{PARTNER.partner_email}</div>
+          <div class="table-grid-content" style="width:100px;">{PARTNER.partner_edi_format|stripslashes}</div>
+          <div class="table-grid-content" style="width:80px;">{PARTNER.partner_auto_translate|stripslashes}</div>
+          <div class="table-grid-content" style="width:80px;">{PARTNER.partner_connector|stripslashes}</div>
+          <div style="clear: both;"></div>
+        </div>
+        <!-- END: rowGrey -->
+      <!-- END: taleRow -->
+    </div>
+    <div id="content-list-paginator">
+    </div>
+   </div>
+   <!-- BEGIN: partnerDetail -->
+    <div id="partner-detail-loader" class="content-loader">
+      Loading, please wait....
+    </div>
+    <!-- BEGIN: jsAlert -->
+	<script type="text/javascript">
+	 alert( "Sorry, partner not found" );
+	</script>
+    <!-- END: jsAlert -->
+   <div id="partner-detail">
+   <div id="partner-title" class="content-title" style="margin-top: 2px;">Dettaglio Partner</div>
+   <div id="partner-content" class="content-body">
+   <fieldset class="detail-fieldset">
+     <legend class="detail-fieldset-legend">Anagrafica</legend>
+     <div class="detail-fieldset-div">
+       <div class="detail-fieldset-div-one">Ragione Sociale:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_org_name" id="partner_org_name" value="{PARTNER_DETAIL.partner_org_name|stripslashes}"/>
+         </label>
+       </div>
+       <div class="detail-fieldset-div-one">Email:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_email" id="partner_email" value="{PARTNER_DETAIL.partner_email|stripslashes}"/>
+         </label>
+       </div>
+       <div style="clear:both;"></div>
+       <div class="detail-fieldset-div-one">Formato EDI:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_edi_format" id="partner_edi_format" value="{PARTNER_DETAIL.partner_edi_format|stripslashes}"/>
+         </label>
+       </div>       
+       <div class="detail-fieldset-div-one">Traduzione auto:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <select class="x-form-field-left" name="partner_auto_translate" id="partner_auto_translate">
+             <option value="{PARTNER_CONNECTOR.partner_auto_translate}">No</option> 
+             <option value="{PARTNER_CONNECTOR.partner_auto_translate}">S&igrave;</option> 
+           </select>
+         </label>
+       </div>
+       <div style="clear:both;"></div>
+       <div class="detail-fieldset-div-one">Connettore:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_connector" id="partner_connector" value="{PARTNER_DETAIL.partner_connector|stripslashes|strtoupper}"/>
+         </label>
+       </div>
+       <div style="clear:both;"></div>
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+     </div>
+   </fieldset>
+   </div>
+   <!-- END: partnerDetail -->
+   <!-- BEGIN: partnerConnectorAS2 -->
+   <div id="partner-detail">
+   <div id="partner-title" class="content-title" style="margin-top: 2px;"> Dettaglio Connettore</div>
+   <div id="partner-content" class="content-body">
+   <fieldset class="detail-fieldset">
+     <legend class="detail-fieldset-legend">Parametri AS2</legend>
+     <div class="detail-fieldset-div">
+       <div class="detail-fieldset-div-one">Nome Partner:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_name" id="partner_name" value="{PARTNER_CONNECTOR.partner_name|stripslashes}"/>
+         </label>
+       </div>
+       <div class="detail-fieldset-div-one">Tipo di Partner:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <select class="x-form-field-left" name="partner_type" id="partner_type">
+             <option value="{PARTNER_CONNECTOR.partner_type}">Locale</option> 
+             <option value="{PARTNER_CONNECTOR.partner_type}">Remoto</option> 
+           </select>
+         </label>
+       </div>
+       <div style="clear:both;"></div>
+       <div class="detail-fieldset-div-one">Certificato pkcs12:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_sec_pkcs12" id="partner_sec_pkcs12" value="{PARTNER_CONNECTOR.partner_sec_pkcs12|stripslashes}"/>
+         </label>
+       </div>       
+       <div class="detail-fieldset-div-one">Password pkcs12:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_sec_pkcs12_password" id="partner_sec_pkcs12_password" value="{PARTNER_CONNECTOR.partner_sec_pkcs12_password|stripslashes}"/>
+         </label>
+       </div>
+       <div style="clear:both;"><br /></div>
+       <div class="detail-fieldset-div-one">Certificato:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_sec_pkcs12" id="partner_sec_pkcs12" value="{PARTNER_CONNECTOR.partner_sec_certificate|stripslashes}"/>
+         </label>
+       </div>
+       <div style="clear:both;"></div>
+       <div class="detail-fieldset-div-one">Security signature:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_sec_signature_algorithm" id="partner_sec_signature_algorithm" value="{PARTNER_CONNECTOR.partner_sec_signature_algorithm|stripslashes}"/>
+         </label>
+       </div>       
+       <div class="detail-fieldset-div-one">Security Algoritm:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_sec_encrypt_algoritm" id="partner_sec_encrypt_algoritm" value="{PARTNER_CONNECTOR.partner_sec_encrypt_algoritm|stripslashes}"/>
+         </label>
+       </div>
+       <div style="clear:both;"><br /></div>
+       <div class="detail-fieldset-div-one">Url:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_send_url" id="partner_send_url" value="{PARTNER_CONNECTOR.partner_send_url|stripslashes}"/>
+         </label>
+       </div>       
+       <div class="detail-fieldset-div-one">Autenticazione:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <select class="x-form-field-left" name="partner_send_credencial_method" id="partner_send_credencial_method">
+             <option value="">Nessuna</option> 
+             <option value="">Http Authentication</option> 
+           </select>
+         </label>
+       </div>
+       <div style="clear:both;"></div>
+       <div class="detail-fieldset-div-one">Username:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_send_credencial_login" id="partner_send_credencial_login" value="{PARTNER_CONNECTOR.partner_send_credencial_login|stripslashes}"/>
+         </label>
+       </div>       
+       <div class="detail-fieldset-div-one">Password:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_send_credencial_password" id="partner_send_credencial_password" value="{PARTNER_CONNECTOR.partner_send_credencial_password|stripslashes}"/>
+         </label>
+       </div>
+       <div style="clear:both;"><br /></div>
+       <div class="detail-fieldset-div-one">MDN:</div>
+       <div class="detail-fieldset-div-two">
+         <label>
+           <input class="x-form-field-left" type="text" name="partner_mdn_request" id="partner_mdn_request" value="{PARTNER_CONNECTOR.partner_mdn_request|stripslashes}"/>
+         </label>
+       </div>       
+       <div style="clear:both;"></div>
+     </div>
+   </fieldset>
+   </div>
+   <!-- END: partnerConnectorAS2 -->
+   </div>
+   <!-- END: main -->
+  </div>
+</div>
+</body>
+</html>

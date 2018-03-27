@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<segments>
+    <segment id="ALD"  name="discountIncreaseInformation" desc="Informations about detail discounts/increase">
+        <data_element id="9001" required="true"/>
+        <data_element id="9090"/>
+        <data_element id="9091"/>
+        <data_element id="9092"/>
+        <data_element id="9093"/>
+        <data_element id="9089"/>
+        <data_element id="9080"/>
+        <data_element id="9094"/>
+    </segment>
+    <segment id="ALT"  name="discountIncreasesSummaryInformations" desc="Informations about summary discounts/increases ">
+        <data_element id="9001" required="true"/>
+        <data_element id="9090"/>
+        <data_element id="9091"/>
+        <data_element id="9092"/>
+        <data_element id="9093"/>
+        <data_element id="9089"/>
+        <data_element id="9080"/>
+    </segment>
+    <segment id="BGM"  name="begin" desc="Starting record">
+        <data_element id="9001" required="true"/>
+        <data_element id="9023" required="true"/>
+        <data_element id="9024"/>
+        <data_element id="9025"/>
+        <data_element id="9026" required="true"/>
+        <data_element id="9027"/>
+        <data_element id="9028"/>
+        <data_element id="1001" required="true"/>
+        <data_element id="1004" required="true"/>
+        <data_element id="9014" required="true"/>
+        <data_element id="9043"/>
+    </segment>
+    <segment id="CCI" name="tackingInformation" desc="Tracking information">
+        <data_element id="9001" required="true"/>
+        <data_element id="1082" required="true"/>
+        <data_element id="9054" required="true"/>
+        <data_element id="9001" required="true"/>
+    </segment>
+    <segment id="CNT" message="orders" name="documentTotals" desc="Document totals">
+        <data_element id="9001" required="true"/>
+        <data_element id="6066"/>
+        <data_element id="6411"/>
+        <data_element id="9110"/>
+    </segment>
+    <segment id="CNT" name="documentTotals" desc="Document totals">
+        <data_element id="9001" required="true"/>
+        <data_element id="6069" required="true"/>
+        <data_element id="6066" required="true"/>
+        <data_element id="6411" required="true"/>
+    </segment>
+    <segment id="DES"  name="rowDescription" desc="Row description">
+        <data_element id="9001" required="true"/>
+        <data_element id="7008"/>
+    </segment>
+    <segment id="DET"  name="documentRow" desc="To identify a line">
+        <data_element id="9001" required="true"/>
+        <data_element id="1082"/>
+        <data_element id="5495"/>
+        <data_element id="1082"/>
+        <data_element id="7140"/>
+        <data_element id="7143"/>
+        <data_element id="9010"/>
+        <data_element id="9010"/>
+        <data_element id="9010"/>
+        <data_element id="9062" required="true"/>
+        <data_element id="9085" required="true"/>
+        <data_element id="9067"/>
+        <data_element id="9085" required="true"/>
+        <data_element id="9067"/>
+        <data_element id="9085"/>
+        <data_element id="9067"/>
+        <data_element id="9085"/>
+        <data_element id="5125"/>
+        <data_element id="9067"/>
+        <data_element id="9085"/>
+        <data_element id="5125"/>
+        <data_element id="9067"/>
+        <data_element id="9085"/>
+        <data_element id="6345"/>
+        <data_element id="9085"/>
+        <data_element id="6345"/>
+    </segment>
+    <segment id="DTM" message="orders" name="dateTimePeriodReference" desc="Date time period reference">
+        <data_element id="9001" required="true"/>
+        <data_element id="9014" required="true"/>
+        <data_element id="9043"/>
+        <data_element id="2005" required="true"/>
+        <data_element id="9014"/>
+        <data_element id="9043"/>
+        <data_element id="2005"/>
+    </segment>
+    <segment id="DTM" name="dateTimePeriodReference" desc="Date time period reference">
+        <data_element id="9001" required="true"/>
+        <data_element id="2005" required="true"/>
+        <data_element id="2380" required="true"/>
+        <data_element id="2379" required="true"/>
+    </segment>
+    <segment id="DTR" message="orders" name="rowDateTimePeriodReference" desc="Row's date time period reference">
+        <data_element id="9001" required="true"/>
+        <data_element id="9014" required="true"/>
+        <data_element id="9043"/>
+        <data_element id="2005" required="true"/>
+        <data_element id="9014"/>
+        <data_element id="9043"/>
+        <data_element id="2005"/>
+        <data_element id="6060"/>
+    </segment>
+    <segment id="RFF" message="orders" name="documentReferenceInformation" desc="Document reference information">
+        <data_element id="9001" required="true"/>
+        <data_element id="1153"/>
+        <data_element id="1154"/>
+        <data_element id="9078"/>
+        <data_element id="9044"/>
+        <data_element id="9049"/>
+        <data_element id="9050"/>
+        <data_element id="9051"/>
+        <data_element id="9052"/>
+        <data_element id="9059"/>
+    </segment>
+    <segment id="RFF"  name="documentReferenceInformation" desc="Document reference information">
+        <data_element id="9001" required="true"/>
+        <data_element id="1153" required="true"/>
+        <data_element id="1154" required="true"/>
+        <data_element id="9078" required="true"/>
+        <data_element id="9044"/>
+    </segment>
+    <segment id="FTL" message="orders" name="documentRowNotes" desc="Notes about document's row">
+        <data_element id="9001" required="true"/>
+        <data_element id="9019" required="true"/>
+    </segment>
+    <segment id="FTL"  name="documentRowNotes" desc="Notes about document's row">
+        <data_element id="9001" required="true"/>
+        <data_element id="9099"/>
+        <data_element id="9077" required="true"/>
+    </segment>
+    <segment id="FTT"  name="documentSummaryNotes" desc="Notes about the document">
+        <data_element id="9001" required="true"/>
+        <data_element id="9099"/>
+        <data_element id="9077" required="true"/>
+    </segment>
+    <segment id="FTX"  name="additionalInformation" desc="Additional information about document's head">
+        <data_element id="9001" required="true"/>
+        <data_element id="6345"/>
+        <data_element id="9077"/>
+    </segment>
+    <segment id="IMB" name="packagingInformation" desc="Packaging informations">
+        <data_element id="9001" required="true"/>
+        <data_element id="1082" required="true"/>
+        <data_element id="9004" required="true"/>
+        <data_element id="9057" required="true"/>
+        <data_element id="9055" required="true"/>
+        <data_element id="6060"/>
+        <data_element id="9067" required="true"/>
+        <data_element id="9064" required="true"/>
+    </segment>
+    <segment id="IVA"  name="vatSubtotals" desc="VAT subtotals">
+        <data_element id="9001" required="true"/>
+        <data_element id="9087"/>
+        <data_element id="9088" required="true"/>
+        <data_element id="5305"/>
+        <data_element id="5278"/>
+        <data_element id="9089"/>
+    </segment>
+    <segment id="LIN" message="orders" name="documentRow" desc="Document row">
+        <data_element id="9001" required="true"/>
+        <data_element id="1082"/>
+        <data_element id="7140"/>
+        <data_element id="9058"/>
+        <data_element id="9010"/>
+        <data_element id="9011"/>
+        <data_element id="9012"/>
+        <data_element id="9017" required="true"/>
+        <data_element id="9065"/>
+        <data_element id="6060" required="true"/>
+        <data_element id="6411"/>
+        <data_element id="9047"/>
+        <data_element id="5125"/>
+        <data_element id="9067"/>
+        <data_element id="9037" required="true"/>
+        <data_element id="9107"/>
+        <data_element id="9108"/>
+        <data_element id="9067"/>
+        <data_element id="9047"/>
+        <data_element id="5125"/>
+        <data_element id="9067"/>
+    </segment>
+    <segment id="LIN"  name="documentRow" desc="Document row">
+        <data_element id="9001" required="true"/>
+        <data_element id="1082" required="true"/>
+        <data_element id="7140" required="true"/>
+        <data_element id="9058"/>
+        <data_element id="9010"/>
+        <data_element id="9011"/>
+        <data_element id="9012"/>
+        <data_element id="9017" required="true"/>
+        <data_element id="6060" required="true"/>
+        <data_element id="6411" required="true"/>
+        <data_element id="9037"/>
+        <data_element id="9066"/>
+        <data_element id="9062" required="true"/>
+        <data_element id="9032"/>
+        <data_element id="9040"/>
+    </segment>
+    <segment id="LOC" name="finalDeliveryInformation" desc="Information about the final destination of the goods">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+        <data_element id="6060" required="true"/>
+        <data_element id="6411"/>
+    </segment>
+    <segment id="MOA" name="rowPriceInformation" desc="Row related price informations">
+        <data_element id="9001" required="true"/>
+        <data_element id="9056" required="true"/>
+        <data_element id="9046" required="true"/>
+        <data_element id="9022" required="true"/>
+    </segment>
+    <segment id="NAA"  name="emitterInformation" desc="Information about who emits the invoice (if different from seller's registered office)">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+        <data_element id="9076"/>
+    </segment>
+    <segment id="NAB" message="orders" name="buyerInformation" desc="Information about the buyer">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+    </segment>
+    <segment id="NAC" message="orders" name="intermediatePointOfDelivery" desc="Information about an intermediate point of delivery">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+    </segment>
+    <segment id="NAD" message="invoic" name="recipientInformation" desc="Information about the recipient of the goods">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053" required="true"/>
+        <data_element id="9033" required="true"/>
+        <data_element id="3164" required="true"/>
+        <data_element id="3229" required="true"/>
+        <data_element id="3251" required="true"/>
+        <data_element id="3207"/>
+        <data_element id="9095"/>
+        <data_element id="9096"/>
+        <data_element id="9097"/>
+        <data_element id="9098"/>
+    </segment>
+    <segment id="NAD" message="orders" name="partInformation" desc="Information about the part">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+    </segment>
+    <segment id="NAD" name="partInformation" desc="Information about the part">
+        <data_element id="9001" required="true"/>
+        <data_element id="3035" required="true"/>
+        <data_element id="3039" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+    </segment>
+    <segment id="NAE"  name="deliveryDocumentIssuerInformation" desc="Information about the issuer of the delivery document, if different from invoice issuer">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053" required="true"/>
+        <data_element id="9033" required="true"/>
+        <data_element id="3164" required="true"/>
+        <data_element id="3229" required="true"/>
+        <data_element id="3251" required="true"/>
+        <data_element id="3207"/>
+    </segment>
+    <segment id="NAF"  name="destinationStockInformation" desc="Information about the destination stock receiving the goods">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053" required="true"/>
+        <data_element id="9033" required="true"/>
+        <data_element id="3164" required="true"/>
+        <data_element id="3229" required="true"/>
+        <data_element id="3251" required="true"/>
+        <data_element id="3207"/>
+        <data_element id="9095"/>
+        <data_element id="9096"/>
+    </segment>
+    <segment id="NAI" message="orders" name="buyerInformation" desc="Information about the buyer">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+    </segment>
+    <segment id="NAI"  name="buyerInformation" desc="Information about the buyer">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053" required="true"/>
+        <data_element id="9033" required="true"/>
+        <data_element id="3164" required="true"/>
+        <data_element id="3229" required="true"/>
+        <data_element id="3251" required="true"/>
+        <data_element id="3207"/>
+        <data_element id="9095" required="true"/>
+    </segment>
+    <segment id="NAM" message="orders" name="stockInformation" desc="Information about the stock delivering the goods">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+    </segment>
+    <segment id="NAM" name="stockInformation" desc="Information about the stock delivering the goods">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053" required="true"/>
+        <data_element id="9033" required="true"/>
+        <data_element id="3164" required="true"/>
+        <data_element id="3229" required="true"/>
+        <data_element id="3251" required="true"/>
+        <data_element id="3207"/>
+        <data_element id="9095"/>
+        <data_element id="9096"/>
+    </segment>
+    <segment id="NAP"  name="payerInformation" desc="Information about the payer (if different from the buyer)">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+        <data_element id="9076"/>
+    </segment>
+    <segment id="NAR"  name="transfereeInformation" desc="Information about the transferee of the goods">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053" required="true"/>
+        <data_element id="9033" required="true"/>
+        <data_element id="3164" required="true"/>
+        <data_element id="3229" required="true"/>
+        <data_element id="3251" required="true"/>
+        <data_element id="3207"/>
+    </segment>
+    <segment id="NAS" message="orders" name="sellerInformation" desc="Information about the seller">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+    </segment>
+    <segment id="NAS" name="sellerInformation" desc="Information about the seller">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053" required="true"/>
+        <data_element id="9033" required="true"/>
+        <data_element id="3164" required="true"/>
+        <data_element id="3229" required="true"/>
+        <data_element id="3251" required="true"/>
+        <data_element id="3207"/>
+        <data_element id="9076" required="true"/>
+        <data_element id="9063"/>
+        <data_element id="9061"/>
+        <data_element id="9068"/>
+        <data_element id="9069"/>
+        <data_element id="9070"/>
+        <data_element id="9071"/>
+        <data_element id="9072"/>
+        <data_element id="9073"/>
+        <data_element id="9074"/>
+        <data_element id="9075"/>
+    </segment>
+    <segment id="NAT"  name="receiverInformation" desc="Information about who receives the invoice (if different from the buyer)">
+        <data_element id="9001" required="true"/>
+        <data_element id="1154" required="true"/>
+        <data_element id="1153" required="true"/>
+        <data_element id="9053"/>
+        <data_element id="9033"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+        <data_element id="9076"/>
+    </segment>
+    <segment id="NAX"  name="refundableInformation" desc="Information about the subject for refund/financing from external entity">
+        <data_element id="9001" required="true"/>
+        <data_element id="3227" required="true"/>
+        <data_element id="9048" required="true"/>
+        <data_element id="9053" required="true"/>
+        <data_element id="9033" required="true"/>
+        <data_element id="3164" required="true"/>
+        <data_element id="3229" required="true"/>
+        <data_element id="3251" required="true"/>
+        <data_element id="3207"/>
+        <data_element id="9095"/>
+        <data_element id="9096"/>
+        <data_element id="9097"/>
+        <data_element id="9098"/>
+    </segment>
+    <segment id="PAT"  name="paymentInformation" desc="Payment terms basis">
+        <data_element id="9001" required="true"/>
+        <data_element id="4279" required="true"/>
+        <data_element id="9078"/>
+        <data_element id="2475"/>
+        <data_element id="2009"/>
+        <data_element id="2151"/>
+        <data_element id="2152"/>
+        <data_element id="9079"/>
+        <data_element id="6345"/>
+        <data_element id="9080"/>
+        <data_element id="9081"/>
+        <data_element id="9082"/>
+        <data_element id="9083"/>
+        <data_element id="9084"/>
+        <data_element id="4439"/>
+        <data_element id="4461"/>
+    </segment>
+    <segment id="TAX"  name="taxesInformation" desc="Information about taxes">
+        <data_element id="9001" required="true"/>
+        <data_element id="9087"/>
+        <data_element id="9088"/>
+        <data_element id="5305"/>
+        <data_element id="5278"/>
+        <data_element id="9089"/>
+    </segment>
+    <segment id="TMA"  name="invoiceTotals" desc="Invoice totals">
+        <data_element id="9001" required="true"/>
+        <data_element id="9100" required="true"/>
+        <data_element id="9101" required="true"/>
+        <data_element id="9102"/>
+        <data_element id="9103"/>
+        <data_element id="9104"/>
+        <data_element id="9105"/>
+        <data_element id="9022"/>
+        <data_element id="9100" required="true"/>
+        <data_element id="9101" required="true"/>
+        <data_element id="9102"/>
+        <data_element id="9103"/>
+        <data_element id="9104"/>
+        <data_element id="9105"/>
+        <data_element id="9022"/>
+        <data_element id="9106"/>
+    </segment>
+    <segment id="TOD"  name="deliveryTransportCondition" desc="Information about delivery or transport">
+        <data_element id="9001" required="true"/>
+        <data_element id="4055" required="true"/>
+        <data_element id="4215" required="true"/>
+        <data_element id="9005"/>
+        <data_element id="9018" required="true"/>
+        <data_element id="9019" required="true"/>
+    </segment>
+    <segment id="TDT"  name="transportDetails" desc="Transport details, kind of transport, ref number and means of transport id">
+        <data_element id="9001" required="true"/>
+        <data_element id="8051" required="true"/>
+        <data_element id="9042" required="true"/>
+        <data_element id="9034"/>
+        <data_element id="8179"/>
+        <data_element id="8178"/>
+        <data_element id="3127"/>
+        <data_element id="9020"/>
+        <data_element id="8101"/>
+        <data_element id="8213"/>
+        <data_element id="8453"/>
+    </segment>
+    <segment id="RFN" name="rowCreditReference" desc="Row references for credit/charge">
+        <data_element id="9001" required="true"/>
+        <data_element id="9086"/>
+        <data_element id="1154"/>
+        <data_element id="9096"/>
+    </segment>
+    <segment id="RFR" name="rowReferenceInfo" desc="Row related informations">
+        <data_element id="9001" required="true"/>
+        <data_element id="1153" required="true"/>
+        <data_element id="1154" required="true"/>
+        <data_element id="9078" required="true"/>
+        <data_element id="9044"/>
+    </segment>
+</segments>

@@ -1,0 +1,408 @@
+<?php
+
+class delfor {
+
+	var $valori = array ();
+	var $position = array (); //FIXME
+
+	function __construct($dest_standard, $dest_release)
+	{
+		$this->dest_standard	= $dest_standard;
+		$this->dest_release		= $dest_release;
+		$this->dest_mapping		= "EDI_{$dest_standard}_MappingProvider";
+		$this->parser			= EDI::parserFactory($dest_standard);
+		$this->translated_doc	= EDI::interchangeFactory ($dest_standard, array(
+																				'directory'			=> $dest_release,
+																				'syntaxIdentifier'	=> 'UNOC',
+																				'syntaxVersion'		=> 3
+																				));
+	}
+
+	function toEDI()
+	{
+		return $this->translated_doc->toEDI();
+	}
+
+	function myLog ($msg)
+	{
+
+	}
+	
+	function myFormat ($num, $int, $dec, $has_sign = FALSE) 
+	{
+		$sign = "";
+		if ($has_sign)
+			if ($num < 0)
+			{
+				$sign = "-";
+				$num = abs($num);
+			}
+			else
+            	$sign = "+";
+            	
+        return $sign.str_pad (number_format ((int)$num, $dec, "", ""), $int+$dec, "0", STR_PAD_LEFT);
+	}
+	
+	function scriviIntestazione ()
+	{
+		$this->valori ['nsegmenti'] = 0;
+        // Scrive i record BGM, NAB, NAS
+		$this->scriviRiga (array (
+									'9001'=>"BGM",
+									'9023'=>$this->valori['fornitore'],
+									'9024'=>$this->valori['fornitoreTipo'],
+									'9026'=>$this->valori['compratore'],
+									'9027'=>$this->valori['compratoreTipo'],
+									'1001'=>'ORDERS',
+									'1004'=>$this->valori['numeroOrdine'],
+									'9014'=>$this->valori['dataOrdine'],
+								));
+		
+		$this->scriviRiga (array (
+									'9001'=>"RFF",
+									'9049'=>$this->valori['numeroSchedulazione'],
+									'9050'=>$this->valori['dataOrdineTestata'],
+								));
+
+		$this->scriviRiga (array (
+									'9001'=>"NAS",
+									'3227'=>$this->valori['fornitore'],
+									'9048'=>$this->valori['fornitoreTipo'],
+								));
+
+		$this->scriviRiga (array (
+									'9001'=>"NAB",
+									'3227'=>$this->valori['compratore'],
+									'9048'=>$this->valori['compratoreTipo'],
+								));
+
+		foreach ($this->valori['nad'] as $nad)
+		{
+			$this->scriviRiga ($nad);
+		}
+		
+		$this->scriviRiga (array (
+									'9001'=>"DTM",
+									'9014'=>$this->valori['dataOrdine'],
+									'2005'=>"002",
+        						));
+	}
+
+	function scriviFooter () 
+	{
+		// Scrive i record CNT
+		if (isset ($this->valori['cnt']) && !empty($this->valori['cnt'])) {
+			foreach ($this->valori['cnt'] as $k => $v) {
+				$this->scriviRiga (array (
+									'9001'=>"CNT",
+									'6066'=>$this->myFormat (array_sum($v), 12, 3),
+									'9110'=>$this->myFormat (++ $this->valori['nsegmenti'], 12, 3),
+									));
+			}
+		}
+		// Svuoto
+		$this->valori['cnt'] = array();
+	}
+	
+	function scriviRiga ($dati = array ())
+	{
+		//global $destMapping, $destStandard, $documento, $position;
+		// Recupero la struttura del record
+		$destMapping = $this->dest_mapping;
+		$mapping = $destMapping::find($dati ['9001'],null,null,'orders');
+		$cc = "EDI_{$this->dest_standard}_Segment";
+		$elt = new $cc ();
+		$elt->id = (string)$dati ['9001'];
+		$elt->name = (string)$mapping['name'];
+		$elt->description = (string)$mapping['desc'];
+
+		// Iter su tutti gli elementi del segmento
+		foreach ($mapping as $c) {
+			$cc = "EDI_{$this->dest_standard}_DataElement";
+			$elid = (string)$c ['id'];
+			if (array_key_exists ($elid, $this->position))
+				$this->position [$elid] ++;
+			else
+				$this->position [$elid] = 1;
+			
+			$el = $destMapping::find($c ['id']);
+			$e = new $cc ();
+			$e->id = (string)$el ['id'];
+			$e->name = (string)$el['name'];
+			$e->description = (string)$el['desc'];
+			$e->maxlength = (string)$el['maxlength'];
+			$ml = (int)$el['maxlength'];
+			$val = $dati [$elid];
+			if ($ml > 0) {
+				// Se serve, accorcio
+				$val = substr ($val, 0, $ml);
+			}
+			$e->value = $val;
+			$elt [] = $e;
+		}
+		// Torno il segmento richiesto
+		$this->translated_doc[] = $elt;
+		
+		$this->valori ['nsegmenti'] ++;
+	}
+
+	function parse($str)
+	{
+		return $this->parseHelper(new SimpleXmlIterator($str, null));
+	}
+
+	function parseHelper($iter, $path = array ())
+	{
+		//global $valori;
+		foreach($iter as $key=>$val) {
+			$newpath = array_merge ($path, array($key));
+			$attuale = implode(">",$newpath);
+			//echo "PATH: $attuale\n"; //per debug
+			if ($iter->hasChildren())
+			{
+				call_user_func(array( &$this,__FUNCTION__), $val, $newpath);
+			}
+			else
+			{
+				$this->valori[$attuale] = strval($val);
+			}
+
+			// Qui ho finito di elaborare ricorsivamente l'elemento. Quindi analizzo i vari dati raccolti
+			switch ($attuale)
+			{
+				case "delfor>dtm":
+					switch ($this->valori["delfor>dtm>c507>e2005"])
+					{
+						case '137': // Data ordine
+							switch ($this->valori["delfor>dtm>c507>e2379"] == '102')
+							{
+								case '102':
+									$this->valori['dataOrdineTestata'] = $this->valori['delfor>dtm>c507>e2380'];
+									break;
+							
+								default:
+									$this->myLog ("$attuale : rilevato formato data non gestito ".$this->valori["delfor>dtm>c507>e2379"]);
+									break;
+							}
+							break;
+						
+						default:
+							$this->myLog ("$attuale : rilevato valore DTM non gestito ".$this->valori["delfor>dtm>c507>e2379"]);
+							break;
+					}
+					break;
+				
+				case "delfor>nad_group>nad":
+					switch ($this->valori["delfor>nad_group>nad>e3035"])
+					{
+						case 'SU':
+							$this->valori['fornitore']		= $this->valori['delfor>nad_group>nad>c082>e3039'];
+							$this->valori['fornitoreTipo']	= $this->valori['delfor>nad_group>nad>c082>e3055'];
+							break;
+							
+						case 'BY':
+							$this->valori['compratore']		= $this->valori['delfor>nad_group>nad>c082>e3039'];
+							$this->valori['compratoreTipo']	= $this->valori['delfor>nad_group>nad>c082>e3055'];
+							break;
+							
+						default:
+							$this->myLog ("$attuale : rilevato valore NAD non gestito ".$this->valori["delfor>nad_group>nad>e3035"]);
+							break;
+					}
+					break;
+					
+				case "delfor>gis_group>sg7_group>nad":
+					switch ($this->valori['delfor>gis_group>sg7_group>nad>e3035'])
+					{
+						case "ST":
+							// Destinazione merce
+							$this->valori['nad'][] = array (
+															'9001'=>"NAD",
+															'3227'=>$this->valori['delfor>gis_group>sg7_group>nad>c082>e3039'],
+															'9048'=>$this->valori['delfor>gis_group>sg7_group>nad>c082>e3055'],
+															'9053'=>$this->valori['delfor>gis_group>sg7_group>nad>c080>e3036'],
+															);
+							break;
+						
+						default:
+							$this->myLog ("$attuale : rilevato valore NAD non gestito ".$this->valori["delfor>gis_group>sg7_group>nad>e3035"]);
+							break;
+					}
+					break;
+					
+				case "delfor>gis_group>sg12_group>lin":
+					// Memorizzo l'ultima riga letta
+					$this->valori ['lastLin']		= $this->valori['delfor>gis_group>sg12_group>lin>c212>e7140'];
+					$this->valori ['lastLinTipo']	= $this->valori['delfor>gis_group>sg12_group>lin>c212>e7143'];
+					break;
+					
+				case "delfor>gis_group>sg12_group>loc":
+					// Punti di consegna
+					// Li porto tutti, anche se in realta' EANCOM non gestisce il TIPO della riga LOC, c'è solo la destinazione
+					switch ($this->valori["delfor>gis_group>sg12_group>loc>e3227"])
+					{
+						case "18": //warehouse
+							$this->valori['loc'][] = array (
+														'3227'=>$this->valori["delfor>gis_group>sg12_group>loc>c517>e3225"],
+														'9048'=>strlen($this->valori["delfor>gis_group>sg12_group>loc>c517>e3055"]) ?
+														$this->valori["delfor>gis_group>sg12_group>loc>c517>e3055"]: "92",
+													);
+							break;
+						
+						case "19": //factory/plant
+							$this->valori ['loc'][] = array (
+															'3227'=>$this->valori ["delfor>gis_group>sg12_group>loc>c517>e3225"],
+															'9048'=>strlen($this->valori ["delfor>gis_group>sg12_group>loc>c517>e3055"]) ?
+															$this->valori ["delfor>gis_group>sg12_group>loc>c517>e3055"]: "92",
+															);
+							break;
+							
+						case "159": //additional internal destination
+							$this->valori['loc'][] = array (
+															'3227'=>$this->valori["delfor>gis_group>sg12_group>loc>c517>e3225"],
+															'9048'=>strlen($this->valori["delfor>gis_group>sg12_group>loc>c517>e3055"]) ?
+															$this->valori ["delfor>gis_group>sg12_group>loc>c517>e3055"] : "92",
+															);
+							break;
+					
+						default:
+							$this->myLog ("$attuale : rilevato valore NAD non gestito ".$this->valori["delfor>gis_group>sg12_group>loc>e3227"]);
+							break;
+					}
+					break;
+					
+				case "delfor>gis_group>sg12_group>sg13_group>rff":
+					// Riferimenti a livello di RIGA, non previsti in EURITMO. Se si vuole gestire diversamente occorre probabilmente
+					// fare un ORDERS per ogni schedulazione (sg18_group)
+					switch ($this->valori['delfor>gis_group>sg12_group>sg13_group>rff>c506>e1153'])
+					{
+						case "ON": // Numero ordine
+							$this->valori['numeroOrdine'] = $this->valori['delfor>gis_group>sg12_group>sg13_group>rff>c506>e1154'];
+							break;
+						
+						case "AAN": // Numero assegnato dal buyer
+							$this->valori['numeroSchedulazione'] = $this->valori['delfor>gis_group>sg12_group>sg13_group>rff>c506>e1154'];
+
+							$this->valori['ftl'][] = array (
+															'9001'=>'FTL',
+															'9019'=>"Numero schedulazione: ".$this->valori['delfor>gis_group>sg12_group>sg13_group>rff>c506>e1154'],
+															);
+							break;
+						
+						case "AIF": // Schedulazione precedente
+							$this->valori['ftl'][] = array (
+															'9001'=>'FTL',
+															'9019'=>"Numero schedulazione precedente: ".$this->valori['delfor>gis_group>sg12_group>sg13_group>rff>c506>e1154'],
+															);
+							break;
+						
+						default:
+							$this->myLog ("$attuale : rilevato valore NAD non gestito ".$this->valori["delfor>gis_group>sg12_group>sg13_group>rff"]);
+							break;
+					}
+					break;
+				
+				case "delfor>gis_group>sg12_group>sg17_group>scc": // Schedulazione
+					if (!is_array ($this->valori['schedulazioni']))
+					{
+						$this->valori['schedulazioni'] = array();
+						$cnt = 0;
+					}
+					else
+					{
+						$cnt = count($this->valori['schedulazioni']);
+					}
+					$this->valori['schedulazioni'][$cnt]['tipo'] = $this->valori["delfor>gis_group>sg12_group>sg17_group>scc>e4017"];
+					break;
+				
+				case "delfor>gis_group>sg12_group>sg17_group>sg18_group>qty": // Quantita' dell'ultima schedulazione
+					if (!isset($this->valori['schedulazioni']))
+					{
+						$this->myLog ("$attuale : schedulazione non presente");
+						break;
+					}
+					
+					switch ($this->valori["delfor>gis_group>sg12_group>sg17_group>sg18_group>qty>c186>e6063"])
+					{
+						case "1":
+							$cnt = count($this->valori['schedulazioni']) - 1; // devo valorizzare l'ultima schedulazione
+							$this->valori['schedulazioni'][$cnt]['quantita'] = $this->valori["delfor>gis_group>sg12_group>sg17_group>sg18_group>qty>c186>e6060"];
+					
+						default:
+							$this->myLog ("$attuale : rilevato valore tipo quantita non gestito ".$this->valori["delfor>gis_group>sg12_group>sg17_group>sg18_group>qty>c186>e6063"]);
+							break;
+					}
+					break;
+				
+				case "delfor>gis_group>sg12_group>sg17_group>sg18_group>dtm": // Data dell'ultima schedulazione
+					if (!isset ($this->valori['schedulazioni']))
+					{
+						$this->myLog ("$attuale : schedulazione non presente");
+						break;
+					}
+					switch ($this->valori["delfor>gis_group>sg12_group>sg17_group>sg18_group>dtm>c507>e2005"])
+					{
+						case "2":
+							$cnt = count($this->valori['schedulazioni']) - 1;
+							$this->valori['schedulazioni'][$cnt]['dataConsegna'] =
+							$this->valori["delfor>gis_group>sg12_group>sg17_group>sg18_group>dtm>c507>e2380"];
+							//FIXME gestire la conversione della data
+						
+						default:
+							$this->myLog ("$attuale : rilevato valore tipo data non gestito ".
+							$this->valori["delfor>gis_group>sg12_group>sg17_group>sg18_group>qty>c507>e2005"]);
+							break;
+					}
+					break;
+				
+				case "delfor>gis_group>sg12_group>sg17_group": // Scrittura riga
+					// Per far capire a Swing che la schedulazione rimpiazza un ordine esistente usiamo come chiave
+					// numero ordine (RFF+ON) e data schedulazione (LIN>DTM)
+					// Quando cambia la chiave (nr ordine + data schedulazione + codice prodotto) occorre scrivere un nuovo documento,
+					// non solo una nuova riga
+					// La data ordine e' quella della schedulazione. Se vuota viene presa dalla testata
+					$this->valori['dataOrdine'] = strlen($s['dataConsegna']>0)?$s['dataConsegna']:$this->valori['dataOrdineTestata'];
+					$newkey = $this->valori['lastLin'].$this->valori['dataOrdine'].$this->valori['numeroOrdine'];
+					if ($newkey != $this->valori['key'])
+					{
+						$this->scriviIntestazione();
+						$this->valori['numeroRigaOrdine'] = 1;
+					}
+					$this->valori['key'] = $newkey;
+					
+					if (!isset ($this->valori['numeroRigaOrdine']))
+						$this->valori['numeroRigaOrdine'] = 1;
+						
+					foreach ($this->valori['schedulazioni'] as $s)
+					{
+						$this->scriviRiga (array (
+											'9001'=>"LIN",
+											'1082'=>$this->valori['numeroRigaOrdine'] ++,
+											'9017'=>$this->valori['lastLin'],
+											// '9058'=>$this->valori ['lastLinTipo'],
+											'6060'=>$this->myFormat($s['quantita'], 12, 3),
+											//FIXME '9037'=>, // Numero di pezzi per cartone
+											));
+						$this->scriviRiga (array (
+											'9001'=>"DTR",
+											'9014'=>$s['dataConsegna'],
+											'2005'=>"002",
+											));
+						
+						// Note riga
+						foreach ($this->valori['ftl'] as $f)
+							$this->scriviRiga($f);
+							
+						// Array per la generazione delle righe CNT
+						// se la gestiamo questo dovra' diventare un array con le diverse UM
+						$this->valori['cnt'][0][] = $s['quantita'];
+					}
+					$this->scriviFooter();
+					// Reset variabili di linea!
+					$this->valori['schedulazioni'] = array ();
+					break;
+			}
+		}
+		return;
+	}
+}

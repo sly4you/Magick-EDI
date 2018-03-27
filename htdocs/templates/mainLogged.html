@@ -1,0 +1,49 @@
+<!-- BEGIN: main -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="style/public.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/ajax-common.js"></script>
+<script type="text/javascript" src="js/ajax-modal.js"></script>
+<title>Magick Edi</title>
+</head>
+<body>
+<div id="main">
+  <div id="header">
+    <div id="work-area-menu">
+      <div id="work-area-menu-title">
+        Area di Lavoro
+      </div>
+      <div id="work-area-menu-content">
+        <b>UTENTE:</b><br />
+        <span style="color:#FF0000">{CUSTOMER.first_name|stripslashes} {CUSTOMER.last_name|stripslashes}</span><br />
+        <b>EMAIL COMUNICAZIONI:</b><br />
+        <span style="color:#FF0000">{CUSTOMER.email}</span>
+      </div>
+    </div>
+    <div id="main-menu">
+      <div id="main-menu-title">Main Menu</div>
+      <div id="main-menu-content">
+        <ul id="main-menu">
+          <li><a href="Javascript: getAjaxContent('chapter=mbox', 'content');"><img src="images/btn_mbox_edi.gif" width="25" height="25" /><br />Edi Mbox</a></li>
+          <li><a href="#"><img src="images/btn_identifying.gif" width="24" height="24" /><br />Anagrafica</a></li>
+          <li><a href="Javascript: getAjaxContent('partners', 'content');"><img src="images/btn_partners.gif" width="23" height="25" /><br />Partners</a></li>
+          <li><a href="Javascript: showPopWin( 'index.php?mode=ajax&chapter=login&ac=logout' );"><img src="images/btn_logout.gif" width="24" height="24" /><br />Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="content-loader">
+    Loading, please wait....
+  </div>
+  <div id="content">
+    
+  </div>
+</div>
+<script type="text/javascript">
+  getAjaxContent('chapter=mbox', 'content');
+</script>
+</body>
+</html>
+<!-- END: main -->

@@ -1,0 +1,346 @@
+= Create Self-Signed Certificate Online =
+== Using OpenSSL extension for Php ==
+=== Introduction ===
+This article will show you how to use OpenSSL features from your Php pages so you can build an Online Tool to generate your Self-Signed Certificates.
+
+The first part explains how to generate the different components using the openssl command. These components are the following:
+* the '''Private Key''': this key remains secret and will be used to digitally sign content
+* the '''Certificate Signing Request (CSR)''': this file contains the public key corresponding to the private key along with information such as the organizaion, country, city, etc. of the requester. The Certificate Signing Request is digitally signed with the private key before being sent to a Certificate Authority (CA).
+* the '''Public Key Certificate''':  this file contains the final certificate, signed by the Certificate Authority. In our case, this certificate will be self-signed.
+
+In the second part, you will see how to use the openssl extension for Php and how this has been used to build an online page to easily generate Self-Signed Certificates.
+=== Content of the attached archive ===
+Here is the content of the file selfsigned.zip:
+
+ ./selfsigned
+   +- OpenSSL.php
+   +- index.php
+   +- valid.php
+   +- captcha.jpg
+   +- captcha_example.png
+   +- main.css
+   +- tier4.css
+   +- SelfSigned_1.png
+   +- SelfSigned_2.png
+   +- selfsigned.txt
+   +- selfsigned.html
+
+Details:
+
+* $OpenSSL.php$: class using openssl extension to generate Certificate components. Created from an existing class you can find on the Php web site, but simplified to match our needs.
+* $index.php$: if you copy all the files to a Apache/Php folder, this page will offer you an online page to generate you certificates.
+* $valid.php$: this file generate a random captcha image, with 3 black characters and 3 red characters. You will have to enter the black characters in the form to validate the submission.
+* $*.css$: files to have a Novell style for $index.php$. It is not fully like the CoolSolutions website but it is close to it.
+* $captcha.jpg$: image used as background for captcha images (automatic submission protection)
+* $*.png$: images included in this article
+* $selfsigned.txt$: the source code of this article in Wiki format!
+* $selfsigned.html$: the final HTML code of this article
+=== Creating a Self-Signed Certificate ===
+Here are the steps you can use to generate Self-Signed Certificates using the openssl command. You can easily find a complete documentation and resources on the site [http://www.openssl.org/ http://www.openssl.org/].
+==== '''Private Key''' ====
+Here is the openssl command used to generate the Private Key. Here you can specify the length of the private key using the following:
+ /> openssl genrsa -out mycertificate.key 1024
+ Generating RSA private key, 1024 bit long modulus
+ .++++++
+ .......................++++++
+ e is 65537 (0x10001)
+The command created a new $mycertificate.key$ file containing the private key. Here is a sample content of $mycertificate.key$ (the content is base 64 encoded):
+ /> cat mycertificate.key
+ -----BEGIN RSA PRIVATE KEY-----
+ MIICXgIBAAKBgQDPi9SB+4bqxngskOP1ntvrohDn7pnOLISkb7XNd08SxOJzC/Ku
+ v0lk8teuyKS8hpJg1VKoy0bmW/AD+3WtFpI9fCICdpWxp/VP443WPAtWoU47cNU3
+ ifSR8MBpgNgwjNDcmikCl9CDYqKHO/CvDs5VqGyh0x7wJKs9fI3S4QzTeQIDAQAB
+ AoGBAJMvmhRYWZT0DVOlqVSORW5078Jbrs3NOoAXDPpai0RHRkTKi1+sHpOtuJGm
+ j1V3piVwA3/bMTu6pZtdYFXQ9QHHEprBqpL1ooisf+xr3/XCIchsad0HkB23Z1vl
+ YtzOqjIKwSIeAd6bMfj3bt5xVnoDD5QmBPCtUFKtA2KwBV1VAkEA/pB1AVZWnfvl
+ tkd9iRn0hyYvlLDBnVD1mm3XbHC87LvCH+r6q3p7bL0uuOv/1+izkgdBi2r24o/j
+ LheWbREwEwJBANC3fOCLIIqyJMvwFw33uZ1HgAIXdu990tZFEZDr66Cd4G70iuZI
+ YO66Bg2kPmhLSeqWOe3tDkgAIbyHp4c+l8MCQQCi7SAF6BVt7d/a5yygiB0qNrVz
+ TCHPJxbabPzYqdsxBQa82O7wu2atdPOnZVyM+qGbj8tSiPZUkVUMlgov6jVDAkEA
+ gDUF92Re4/OT2NYtQz41fWBLSH2jaG+Q0F/y72OMBMiV8XIz1EsHh/0q9Lw8PZJp
+ 4DjRcs5YJHA4SPfHN7OCQwJAAjsIbvpx+RQbj6EWg1oQdi1WljHnB8J/52A22QQr
+ ySP7O8cc0UcDc3wI5DAuyKF4h1bdstHS4E5iyNmA3eJXOg==
+ -----END RSA PRIVATE KEY-----
+==== '''Certificate Signing Request''' ====
+Now, we can generate the Certificate Sigining Request and use the Private Key to sign it:
+ /> openssl req -new -nodes -key mycertificate.key -out mycertificate.csr
+You will be requested to enter the different information to be used for the certificate such as the country, city, company, section, common name:
+ You are about to be asked to enter information that will be incorporated
+ into your certificate request.
+ What you are about to enter is what is called a Distinguished Name or a DN.
+ There are quite a few fields but you can leave some blank
+ For some fields there will be a default value,
+ If you enter '.', the field will be left blank.
+ -----
+ Country Name (2 letter code) [AU]:CH
+ State or Province Name (full name) [Some-State]:GE
+ Locality Name (eg, city) []:Geneva
+ Organization Name (eg, company) [Internet Widgits Pty Ltd]:Novell
+ Organizational Unit Name (eg, section) []:Consulting
+ Common Name (eg, YOUR name) []:*.novell.com
+ Email Address []:mail@domain.com
+ 
+ Please enter the following 'extra' attributes
+ to be sent with your certificate request
+ A challenge password []:
+ An optional company name []:
+The command created a new $mycertificate.csr$ file containing the Certificate Signing Request. Here is a sample content of the Certificate Signing Request file (the content is base 64 encoded):
+ /> cat mycertificate.csr
+ -----BEGIN CERTIFICATE REQUEST-----
+ MIIByTCCATICAQAwgYgxCzAJBgNVBAYTAkNIMQswCQYDVQQIEwJHRTEPMA0GA1UE
+ BxMGR2VuZXZhMQ8wDQYDVQQKEwZOb3ZlbGwxEzARBgNVBAsTCkNvbnN1bHRpbmcx
+ FTATBgNVBAMUDCoubm92ZWxsLmNvbTEeMBwGCSqGSIb3DQEJARYPbWFpbEBkb21h
+ aW4uY29tMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPi9SB+4bqxngskOP1
+ ntvrohDn7pnOLISkb7XNd08SxOJzC/Kuv0lk8teuyKS8hpJg1VKoy0bmW/AD+3Wt
+ FpI9fCICdpWxp/VP443WPAtWoU47cNU3ifSR8MBpgNgwjNDcmikCl9CDYqKHO/Cv
+ Ds5VqGyh0x7wJKs9fI3S4QzTeQIDAQABoAAwDQYJKoZIhvcNAQEFBQADgYEAlckF
+ a0yNis2kpg6alHWv+A3zV8XSN6r+2L+UFZLeeIM0mFtpQ9U89B48iQCvOd4RE3Nx
+ xQ16Pb4U6loZuom/24XUaIe4Exw+dtGDMGJgRviNM5g6hNKrj9O+DrLDEpsw61HC
+ 6y5WIb/HLqZlxLxhinP6BulR3hIm7BLyDKyX
+==== '''Public Key Certificate''' ====
+When you have the Certificate Sigining Request file, you can submit it to a Certificate Authority to get a signed certificate or generate a Self-Signed Certificate. Usually, if you want to submit the Certificate Signing Request to a well known Certificate Authority, you can temporary generate a Self-Signed Certificate for testing purpose and then replace it with the final one sent back by the Certificate Authority.
+
+You can generate a Self-Signed Public Key Certificate using the following command:
+ /> openssl x509 -req -days 365 -in mycertificate.csr -signkey mycertificate.key -out mycertificate.cert
+ Signature ok
+ subject=/C=CH/ST=GE/L=Geneva/O=Novell/OU=Consulting/CN=*.novell.com/emailAddress=mail@domain.com
+ Getting Private key
+A new file $mycertificate.cert$ has been created. Here is a sample content of the Public Key Certificate file:
+ /> cat mycertificate.cert
+ -----BEGIN CERTIFICATE-----
+ MIICiTCCAfICCQDoD7EBKzQm1TANBgkqhkiG9w0BAQUFADCBiDELMAkGA1UEBhMC
+ Q0gxCzAJBgNVBAgTAkdFMQ8wDQYDVQQHEwZHZW5ldmExDzANBgNVBAoTBk5vdmVs
+ bDETMBEGA1UECxMKQ29uc3VsdGluZzEVMBMGA1UEAxQMKi5ub3ZlbGwuY29tMR4w
+ HAYJKoZIhvcNAQkBFg9tYWlsQGRvbWFpbi5jb20wHhcNMDgwMTMwMDkyNzQxWhcN
+ MDkwMTI5MDkyNzQxWjCBiDELMAkGA1UEBhMCQ0gxCzAJBgNVBAgTAkdFMQ8wDQYD
+ VQQHEwZHZW5ldmExDzANBgNVBAoTBk5vdmVsbDETMBEGA1UECxMKQ29uc3VsdGlu
+ ZzEVMBMGA1UEAxQMKi5ub3ZlbGwuY29tMR4wHAYJKoZIhvcNAQkBFg9tYWlsQGRv
+ bWFpbi5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAM+L1IH7hurGeCyQ
+ 4/We2+uiEOfumc4shKRvtc13TxLE4nML8q6/SWTy167IpLyGkmDVUqjLRuZb8AP7
+ da0Wkj18IgJ2lbGn9U/jjdY8C1ahTjtw1TeJ9JHwwGmA2DCM0NyaKQKX0INiooc7
+ 8K8OzlWobKHTHvAkqz18jdLhDNN5AgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAKsT3
+ Vl3lc8vWjiH520payGbbTLudMSPhe8qr36xDibuHzWSf8vO1TkENSQZQieI8l493
+ 9k/tnglXiqA3D3R3MHAypjt+2OMie3GpRa2yqF8QH2QH98b6Z88YcjuVXXd3undn
+ tJs5xuvMFckP1L/dljhz4FoUCmf54MjKfRPzKNU=
+ -----END CERTIFICATE-----
+=== Using openssl module for Php ===
+@ '''Note:''' You will need to have OpenSSL installed on your server and also the openssl extension for Php. Check Php documentation for more information.
+==== '''Configuration''' ====
+There are two arrays used for generating the different keys and Certificate Signing Request resource. The first is the config array, containing the path to the openssl.cnf file on your system and also the private key length in bits (512, 1024 or 2048; has to be an integer value, not a string value):
+ Array 
+ (
+    [config] => /etc/ssl/openssl.cnf
+    [private_key_bits] => 1024 
+ )
+The second array contains all the information needed for the Certificate Signing Resource like the country, state, company, common name, etc.:
+ Array
+ (
+    [country] => ch
+    [state] => GE
+    [city] => Geneva
+    [company] => Novell
+    [section] => Consulting
+    [domain] => *.novell.com
+    [email] => mail@domain.com
+ )
+==== '''Generating components''' ====
+Here is how to generate a Private Key using the $open_pkey_new()$ method:
+ $privkey = openssl_pkey_new($this->config);
+From there, you can get the Certificate Signing Request resource, sign it using the Private Key and create the Self-Signed Certificate:
+ $csr = openssl_csr_new($dn, $privkey, $this->config);
+ $sscert = openssl_csr_sign($csr, null, $privkey, $daysValid, $this->config);
+An export of the Public Key Certificate can be obtained using the following Php code:
+ openssl_x509_export($sscert, $this->publickey);
+An export of the Private Key can be obtained using the following:
+ openssl_pkey_export($privkey, $this->privatekey, $this->privkeypass, $this->config);
+An export of the Certificate Signing Request can be obtained using the following Php code:
+ openssl_csr_export($csr, $this->csr);
+=== Technical Details about the Online Tool ===
+==== '''Form handling''' ====
+[[Image:SelfSigned_1.png]]
+
+Retrieving all attributes from submission:
+ function getParameter( $aParam )
+ {
+ 	$aParam = isset( $_POST[$aParam] ) ? $_POST[$aParam] : "";
+ 	return $aParam;
+ }
+ 
+ $attributes = array( 
+ 	"action" => "", 
+ 	"valid" => "", 
+ 	"country" => "", 
+ 	"state" => "",
+ 	"city" => "",
+ 	"company" => "",
+ 	"section" => "",
+ 	"domain" => "",
+ 	"email" => "",
+ 	"passphrase" => "",
+ 	"bitsize" => "",
+ 	"days" => "" );
+ 
+ foreach( $attributes as $key=>$value )
+ {
+ 	$attributes[$key] = getParameter( $key );
+ }
+Content of the array $$attributes$ after submission:
+ Array
+ (
+    [action] => generate
+    [valid] => 490
+    [country] => ch
+    [state] => GE
+    [city] => Geneva
+    [company] => Novell
+    [section] => Consulting
+    [domain] => *.novell.com
+    [email] => mail@domain.com
+    [passphrase] => 
+    [bitsize] => 1024
+    [days] => 365
+ )
+==== '''OpenSSL utility class''' ====
+The $OpenSSL$ utility class is simple and only generates and exports the different components used in this Online Tool. You can also add methods to be able to load existing components from a file (such as the Certificate Signing Request to see its details) or to encrypt / decrypt data using the Private Key and the Public Key Certificate.
+You can find more details on the Php documentation of the openssl extension.
+
+Here is the different parts of the source code of this $OpenSSL$ class. You will see at the top of the file, the path of your openssl.cnf file.
+
+ DEFINE("OPEN_SSL_CONF_PATH", "/etc/ssl/openssl.cnf"); //point to your config file
+
+The class itself is then declared, with the different attributes it will use:
+
+ class OpenSSL 
+ {
+ 	var $privatekey;	//private key
+ 	var $publickey;		//public key
+ 	var $privkeypass;	//password for private key
+ 	var $csr;			//certificate signing request
+ 	var $config;
+
+The $OpenSSL()$ method is the constructor of the class, that configures the configuration array used later on: 
+
+ 	function OpenSSL() { $this->config = array("config" => OPEN_SSL_CONF_PATH); }
+
+The main function used here is the $do_csr()$ one that creates a Private Key, create the Certificate Signing Request resource and sign it with the Private Key, and then export the Private Key, the Public Key Certificate and the Certificate Signing Resource.
+ 	function do_csr( $countryName,
+ 			$stateOrProvinceName,
+ 			$localityName,
+ 			$organizationName,
+ 			$organizationalUnitName,
+ 			$commonName,
+ 			$emailAddress,
+ 			$bitsize,
+ 			$daysValid )
+ 	{
+ 		$dn = array();
+ 		$dn["countryName"]         = $countryName != ""	        ? $countryName         : "ch";
+ 		$dn["stateOrProvinceName"] = $stateOrProvinceName != "" ? $stateOrProvinceName : "MyState";
+ 		$dn["organizationName"]    = $organizationName != ""    ? $organizationName    : "MyCompany";
+ 		$dn["commonName"]          = $commonName != ""          ? $commonName          : "my.domain.com";
+ 
+ 		if ( $localityName != "" )           $dn["localityName"]           = $localityName;
+ 		if ( $organizationalUnitName != "" ) $dn["organizationalUnitName"] = $organizationalUnitName;
+ 		if ( $emailAddress  != "" )          $dn["emailAddress"]           = $emailAddress;
+ 
+ 		$this->config[ "private_key_bits" ] = (int) $bitsize;
+ 
+ 		$privkey = openssl_pkey_new($this->config);
+ 		$csr = openssl_csr_new($dn, $privkey, $this->config);
+ 		$sscert = openssl_csr_sign($csr, null, $privkey, $daysValid, $this->config);
+ 		openssl_x509_export($sscert, $this->publickey);
+ 		openssl_pkey_export($privkey, $this->privatekey, $this->privkeypass, $this->config);
+ 		openssl_csr_export($csr, $this->csr);
+ 	}
+
+Other access methods are defined to set the Private Key passphrase if any specified, and get the different components:
+
+ 	function set_privkeypass($pass) { $this->privkeypass=$pass; }
+ 
+ 	function get_privatekey() { return $this->privatekey; }
+ 
+ 	function get_privkeypass() { return $this->privkeypass; }
+ 
+ 	function get_publickey() { return $this->publickey; }
+ 
+ 	function get_csr() { return $this->csr; }
+ }
+==== '''Catpcha protection''' ====
+The file $valid.php$ generates captcha images to protect from automated submission like the following:
+
+[[Image:captcha_example.png]]
+
+The process to create such image is very simple:
+* an image is created from a background image, so automatic characters recognition is difficult
+* when called the file generates a random string (characters in black), store it in the session, generate a second random string (characters in red) and display the image. The user will have to enter the characters in black from the image which makes it even more complicated for robots to get the Security Code...
+* on submission, the Php script compares the Security Code entered by the user and the value from the session
+Here are the different parts of the code. First, the $valid.php$ file starts the session:
+ session_start();
+Then some headers are used to prevent caching of the generated image:
+ header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+ header("Cache-Control: no-store, no-cache, must-revalidate");
+ header("Cache-Control: post-check=0, pre-check=0", false);
+ header("Pragma: no-cache");
+The following function generates a random string:
+ function _generateRandString($length=6)
+ {
+     $_rand_src = array(
+         array(48,57) //digits
+         , array(97,122) //lowercase chars
+         , array(65,90) //uppercase chars
+     );
+     srand ((double) microtime() * 1000000);
+     $random_string = "";
+     for($i=0;$i<$length;$i++){
+         $i1=rand(0,sizeof($_rand_src)-1);
+         $random_string .= chr(rand($_rand_src[$i1][0],$_rand_src[$i1][1]));
+     }
+     return $random_string;
+ }
+Then the first random string is generated, stored in the session, add it to the image:
+ $im = @imagecreatefromjpeg("captcha.jpg");
+ $rand = _generateRandString(3);
+ $_SESSION['captcha'] = $rand;
+ ImageString($im, 5, 2, 2, $rand[0]." ".$rand[1]." ".$rand[2]." ", ImageColorAllocate ($im, 0, 0, 0));
+The second random string is generated and added to the image:
+ $rand = _generateRandString(3);
+ ImageString($im, 5, 2, 2, " ".$rand[0]." ".$rand[1]." ".$rand[2], ImageColorAllocate ($im, 255, 0, 0));
+Then the script returns the image generated:
+ Header ('Content-type: image/jpeg');
+ imagejpeg($im,NULL,100);
+ ImageDestroy($im);
+
+Once submitted, the Certificate Signing Resource, Public Key Certificate and the Private Key exports will be displayed on the page. You can then copy/paste the content to save the contents to different files.
+
+[[Image:SelfSigned_2.png]]
+
+=== Using the certificates in Apache ===
+From there, you can import you Private Key and Public Key Certificate in Apache for the SSL configuration, for instance. If you want to setup multiple servers, you can also add one step by creating a Self-Signed Certificate Authority, using the same method, and then use this Self-Signed Certificate Authority to generate a Public Key Certificate. Then, if you import the Self-Signed Certificate Authority in your web browser, any Certificates signed by this Certificate Authority will be validated and there will be no security pop-ups.
+
+In your configuration file, Apache should listen to port 443 (or other if non standard):
+
+ Listen 443
+
+Then, the ssl module should be loaded:
+
+ LoadModule ssl_module modules/mod_ssl.so
+
+From there, there are configuration lines for SSL like the following:
+
+ SSLEngine on
+ 
+ SSLCertificateFile /etc/httpd/ssl.crt/server.crt
+ SSLCertificateKeyFile /etc/httpd/ssl.key/server.key
+
+You can replace the content of $server.crt$ and $server.key$ with your Public Key Certificate and your Private Key you generated. You will find more detailed information on how to setup SSL with Apache on Apache web site.
+=== Summary ===
+Using the extension openssl for Php makes it easy to build an Online Tool to generate '''Self-Signed Certificates''' and the different components such as the '''Certificate Signing Request''', the '''Private Key''' and the '''Public Key Certificate'''. We only used the basic features of the library and you can do much more than that. Using the different functions, you could create a whole PKI interface with Certificate Authority, encryption, decryption, signatures... Now, you can have fun with setting up SSL, with encryption, decryption and digital signatures using your certificates!
+=== Resources ===
+* OpenSSL web site: [http://www.openssl.org/ http://www.openssl.org/]
+* Public Key Cryptography on Wikipedia: [http://en.wikipedia.org/wiki/Public-key_cryptography http://en.wikipedia.org/wiki/Public-key_cryptography]
+* Php documentation: [http://fr.php.net/openssl http://fr.php.net/openssl]
+* Apache documentation: [http://httpd.apache.org/docs/2.0/ssl/ssl_howto.html http://httpd.apache.org/docs/2.0/ssl/ssl_howto.html]
+
+{{__TOC__}}
+

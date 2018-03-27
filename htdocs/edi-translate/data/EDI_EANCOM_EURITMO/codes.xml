@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<data_elements>
+    <data_element id="2005">
+        <code id="2" desc="Asked delivery date/time"/>
+        <code id="91" desc="Shipping date/time"/>
+        <code id="63" desc="Delivery date/time (not later than)"/>
+        <code id="64" desc="Delivery date/time (not before than)"/>
+        <code id="69" desc="Delivery date/time (compulsory/guaranteed)"/>
+        <code id="95" desc="Delivery document date/time"/>
+        <code id="234" desc="Goods pickup date/time (not before than)"/>
+        <code id="358" desc="Delivery agreed date/time (during or later than)"/>
+        <code id="359" desc="Delivery agreed date/time (during or before than)"/>
+    </data_element>
+    <data_element id="2009">
+        <code id="1" desc="Reference date"/>
+        <code id="2" desc="Before reference"/>
+        <code id="3" desc="After reference"/>
+        <code id="4" desc="End of 10-day period containing the reference date"/>
+        <code id="5" desc="End of 2-week period containing the reference date"/>
+        <code id="6" desc="End of month containing the reference date"/>
+        <code id="7" desc="End of the month following the month of reference date"/>
+        <code id="8" desc="End of quarter containing the reference date"/>
+        <code id="9" desc="End of year containing the reference date"/>
+        <code id="10" desc="End of week containing the reference date"/>
+        <code id="11" desc="End of ten day period following month after reference date&apos;s month"/>
+        <code id="12" desc="End of half year containing the reference date"/>
+    </data_element>
+    <data_element id="2151">
+        <code id="3M" desc="Quarter"/>
+        <code id="6M" desc="Half-year"/>
+        <code id="AA" desc="Air hour"/>
+        <code id="AD" desc="Air day"/>
+        <code id="CD" desc="Calendar day (includes weekends and holidays)"/>
+        <code id="CW" desc="Calendar week (7day)"/>
+        <code id="D" desc="Day"/>
+        <code id="DC" desc="Ten days period"/>
+        <code id="DW" desc="Work day"/>
+        <code id="F" desc="Period of two weeks"/>
+        <code id="H" desc="Hour"/>
+        <code id="HM" desc="Half month"/>
+        <code id="M" desc="Month"/>
+        <code id="MN" desc="Minute"/>
+        <code id="P" desc="Four month period"/>
+        <code id="S" desc="Second"/>
+        <code id="SD" desc="Surface day"/>
+        <code id="SI" desc="Indefinite"/>
+        <code id="W" desc="Week"/>
+        <code id="WD" desc="Working days"/>
+        <code id="WW" desc="5 day work week"/>
+        <code id="Y" desc="Year"/>
+        <code id="ZZZ" desc="Mutually defined"/>
+    </data_element>
+    <data_element id="2379">
+        <code id="902" desc="SSAAMMGG"/>
+        <code id="203" desc="SSAAMMGGOOMM"/>
+        <code id="718" desc="SSAAMMGGO-SSAAMMGG"/>
+    </data_element>
+    <data_element id="2475">
+        <code id="1" desc="Date of order"/>
+        <code id="2" desc="Date of confirmation"/>
+        <code id="3" desc="Date of contract"/>
+        <code id="4" desc="Date of signature of contract"/>
+        <code id="5" desc="Date of invoice"/>
+        <code id="6" desc="Date of credit note"/>
+        <code id="7" desc="Date of present document"/>
+        <code id="8" desc="Date of confirmation of order received"/>
+        <code id="9" desc="Date invoice received"/>
+        <code id="11" desc="Date credit note received"/>
+        <code id="12" desc="Date present document received"/>
+        <code id="13" desc="Date of resale by buyer"/>
+        <code id="14" desc="Date proceeds of resale collected by buyer"/>
+        <code id="21" desc="Date goods received by buyer"/>
+        <code id="22" desc="Date goods received by buyer&apos;s agent"/>
+        <code id="23" desc="Date goods received by carrier"/>
+        <code id="24" desc="Date ex-works"/>
+        <code id="25" desc="Date goods handed over for shipment by seller or agent"/>
+        <code id="26" desc="Date of arrival of transport"/>
+        <code id="27" desc="Date of outward frontier crossing"/>
+        <code id="28" desc="Date of inward frontier crossing"/>
+        <code id="29" desc="Date of delivery of goods to establishments/domicile/site"/>
+        <code id="31" desc="Stipulated date for payment of documentary credit"/>
+        <code id="32" desc="Stipulated date for acceptance of documentary credit"/>
+        <code id="33" desc="Stipulated date for negotiation of documentary credit"/>
+        <code id="41" desc="Date of delivery to buyer of documents representing goods"/>
+        <code id="42" desc="Date of delivery to buyer&apos;s agent of documents representing goods"/>
+        <code id="43" desc="Date of delivery to carrier of documents representing goods"/>
+        <code id="44" desc="Date of delivery to intermediary bank of documents representing good"/>
+        <code id="45" desc="Date of bill of lading, consignment note or other transport document"/>
+        <code id="46" desc="Date of receipt for loading (mate&apos;s receipt)"/>
+        <code id="47" desc="Date of negotiable instrument (draft, promissory note, bank)"/>
+        <code id="48" desc="Date of receipt of tool dependent initial samples plus unlimited absolute bank guarantee plus value added tax"/>
+        <code id="52" desc="Due date of negotiable instrument"/>
+        <code id="53" desc="Date of presentation of negotiable instrument"/>
+        <code id="54" desc="Date of acceptance of negotiable instrument"/>
+        <code id="55" desc="Date of acceptance of tooling"/>
+        <code id="56" desc="Date of receipt of tooling"/>
+        <code id="57" desc="Date of acceptance of first samples produced under production conditions"/>
+        <code id="60" desc="Date of start of work"/>
+        <code id="61" desc="Date of end of work"/>
+        <code id="62" desc="Date of provisional reception of work"/>
+        <code id="63" desc="Date of final acceptance of work"/>
+        <code id="64" desc="Date of certificate of preliminary acceptance"/>
+        <code id="65" desc="Date of certificate of final acceptance"/>
+        <code id="66" desc="Specified date"/>
+        <code id="67" desc="Anticipated delivery date"/>
+        <code id="68" desc="Effective date"/>
+        <code id="69" desc="Invoice transmission date"/>
+        <code id="70" desc="Date of issue of transport document(s)"/>
+        <code id="71" desc="Date of presentation of documents"/>
+        <code id="72" desc="Payment date"/>
+        <code id="73" desc="Draft(s) at ... days sight"/>
+        <code id="74" desc="Draft(s) at ... days date"/>
+        <code id="75" desc="Draft(s) at ... days after date of issuance of transport document(s)"/>
+        <code id="76" desc="Draft(s) at ... days after date of presentation of documents"/>
+        <code id="77" desc="Specified draft date"/>
+        <code id="78" desc="Customs clearance date (import)"/>
+        <code id="79" desc="Customs clearance date (export)"/>
+        <code id="80" desc="Date of salary payment"/>
+        <code id="81" desc="Date of shipment as evidenced by the transport document(s)"/>
+        <code id="ZZZ" desc="Other reference date agreed upon between the parties"/>
+    </data_element>
+    <data_element id="5305">
+        <code id="A" desc="Mixed tax rate"/>
+        <code id="B" desc="Transferred (VAT)"/>
+        <code id="C" desc="Duty paid by supplier"/>
+        <code id="E" desc="Exempt from tax"/>
+        <code id="G" desc="Free export item, tax not charged"/>
+        <code id="H" desc="Higher rate"/>
+        <code id="O" desc="Services outside scope of tax"/>
+        <code id="S" desc="Standard rate"/>
+        <code id="Z" desc="Zero rated goods"/>
+    </data_element>
+    <data_element id="9048">
+        <code id="14" desc="EAN/UCC code"/>
+        <code id="VA" desc="VAT number"/>
+        <code id="91" desc="Seller assigned code"/>
+        <code id="92" desc="Buyer assigned code"/>
+        <code id="ZZ" desc="Shared code"/>
+    </data_element>
+    <data_element id="3035">
+        <code id="BY" desc="Customer"/>
+        <code id="SH" desc="Shipper code (EAN-UCC)"/>
+        <code id="SU" desc="Supplier"/>
+        <code id="UC" desc="Last recipient of the goods"/>
+        <code id="FR" desc="Message sender"/>
+        <code id="PW" desc="Goods start location"/>
+        <code id="IV" desc="Invoice recipient"/>
+        <code id="OB" desc="Order sender"/>
+        <code id="DP" desc="Delivery point"/>
+        <code id="CN" desc="Intermediate destination"/>
+        <code id="FD" desc="Deposit destination"/>
+    </data_element>
+    <data_element id="1153">
+        <code id="AAJ" desc="Delivery note number"/>
+        <code id="AAS" desc="Transport document number"/>
+        <code id="CR" desc="Customer reference"/>
+        <code id="CT" desc="Contract number"/>
+        <code id="IP" desc="Import license number"/>
+        <code id="ON" desc="Order number"/>
+        <code id="PK" desc="Packing list number"/>
+        <code id="POR" desc="Delivery advice number"/>
+        <code id="VN" desc="Order number"/>
+        <code id="AAU" desc="Disposition/delivery plan number"/>
+        <code id="AAB" desc="Shipping invoice number"/>
+        <code id="AAK" desc="DESADV number (in case of amend)"/>
+        <code id="ALQ" desc="Return delivery note number"/>
+    </data_element>
+    <data_element id="4055">
+        <code id="2" desc="Delivery condition"/>
+        <code id="3" desc="Delivery costs and condition"/>
+    </data_element>
+    <data_element id="4215">
+        <code id="PP" desc="In charge to shipper"/>
+        <code id="CC" desc="In charge to recipient"/>
+    </data_element>
+    <data_element id="4279">
+        <code id="1" desc="Basic"/>
+        <code id="2" desc="End of month"/>
+        <code id="3" desc="Fixed date"/>
+        <code id="4" desc="Deferred"/>
+        <code id="5" desc="Discount not applicable"/>
+        <code id="6" desc="Mixed"/>
+        <code id="7" desc="Extended"/>
+        <code id="8" desc="Basic discount offered"/>
+        <code id="9" desc="Proximo"/>
+        <code id="10" desc="Instant"/>
+        <code id="11" desc="Elective"/>
+        <code id="12" desc="10 days after end of month"/>
+        <code id="13" desc="Seller to advise buyer"/>
+        <code id="14" desc="Paid against statement"/>
+        <code id="15" desc="No charge"/>
+        <code id="16" desc="Not yet defined"/>
+        <code id="17" desc="Ultimo"/>
+        <code id="18" desc="Previously agreed upon"/>
+        <code id="20" desc="Penalty terms"/>
+        <code id="21" desc="Payment by instalment"/>
+        <code id="22" desc="Discount"/>
+        <code id="23" desc="Available by sight payment"/>
+        <code id="24" desc="Available by deferred payment"/>
+        <code id="25" desc="Available by acceptance"/>
+        <code id="26" desc="Available by negotiation with any bank"/>
+        <code id="27" desc="Available by negotiation with any bank in ..."/>
+        <code id="28" desc="Available by negotiation by named bank"/>
+        <code id="29" desc="Available by negotiation"/>
+        <code id="30" desc="Adjustment payment"/>
+        <code id="31" desc="Late payment"/>
+        <code id="32" desc="Advanced payment"/>
+        <code id="33" desc="Payment by instalments according to progress (as agreed)"/>
+        <code id="34" desc="Payment by instalments according to progress (to be agreed)"/>
+        <code id="35" desc="Nonstandard"/>
+        <code id="ZZZ" desc="Mutually defined"/>
+    </data_element>
+    <data_element id="5125">
+        <code id="AAA" desc="Calculation net"/>
+        <code id="AAB" desc="Calculation gross"/>
+        <code id="AAC" desc="Allowances and charges not included, tax included"/>
+        <code id="AAD" desc="Average selling price"/>
+        <code id="AAE" desc="Information price, excluding allowances or charges, including taxes"/>
+        <code id="AAF" desc="Information price, excluding allowances or charges, and taxes"/>
+        <code id="CAL" desc="Calculation price"/>
+        <code id="INF" desc="Information"/>
+        <code id="INV" desc="Invoice price"/>
+    </data_element>
+    <data_element id="7143">
+        <code id="AA" desc="Product version number"/>
+        <code id="AB" desc="Assembly"/>
+        <code id="AC" desc="HIBC (Health Industry Bar Code)"/>
+        <code id="AD" desc="Cold roll number"/>
+        <code id="AE" desc="Hot roll number"/>
+        <code id="AF" desc="Slab number"/>
+        <code id="AG" desc="Software revision number"/>
+        <code id="AH" desc="UPC (Universal Product Code) Consumer package code (1-5-5)"/>
+        <code id="AI" desc="UPC (Universal Product Code) Consumer package code (1-5-5-1)"/>
+        <code id="AJ" desc="Sample number"/>
+        <code id="AK" desc="Pack number"/>
+        <code id="AL" desc="UPC (Universal Product Code) Shipping container code (1-2-5- 5)"/>
+        <code id="AM" desc="UPC (Universal Product Code)/EAN (European article number) Shipping container code (1-2-5-5-1)"/>
+        <code id="AN" desc="UPC (Universal Product Code) suffix"/>
+        <code id="AO" desc="State label code"/>
+        <code id="AP" desc="Heat number"/>
+        <code id="AT" desc="Price look up number"/>
+        <code id="AU" desc="NSN (North Atlantic Treaty Organization Stock Number)"/>
+        <code id="BO" desc="Buyers color"/>
+        <code id="BP" desc="Buyer&apos;s part number"/>
+        <code id="CC" desc="Industry commodity code"/>
+        <code id="CG" desc="Commodity grouping"/>
+        <code id="CL" desc="Color number"/>
+        <code id="CR" desc="Contract number"/>
+        <code id="CV" desc="Customs article number"/>
+        <code id="DR" desc="Drawing revision number"/>
+        <code id="DW" desc="Drawing"/>
+        <code id="EC" desc="Engineering change level"/>
+        <code id="EF" desc="Material code"/>
+        <code id="EN" desc="International Article Numbering Association (EAN)"/>
+        <code id="GB" desc="Buyer&apos;s internal product group code"/>
+        <code id="GN" desc="National product group code"/>
+        <code id="GS" desc="General specification number"/>
+        <code id="HS" desc="Harmonised system"/>
+        <code id="IB" desc="ISBN (International Standard Book Number)"/>
+        <code id="IN" desc="Buyer&apos;s item number"/>
+        <code id="IS" desc="ISSN (International Standard Serial Number)"/>
+        <code id="IT" desc="Buyer&apos;s style number"/>
+        <code id="IZ" desc="Buyer&apos;s size code"/>
+        <code id="MA" desc="Machine number"/>
+        <code id="MF" desc="Manufacturer&apos;s (producer&apos;s) article number"/>
+        <code id="MN" desc="Model number"/>
+        <code id="MP" desc="Product/service identification number"/>
+        <code id="NB" desc="Batch number"/>
+        <code id="ON" desc="Customer order number"/>
+        <code id="PD" desc="Part number description"/>
+        <code id="PL" desc="Purchaser&apos;s order line number"/>
+        <code id="PO" desc="Purchase order number"/>
+        <code id="PV" desc="Promotional variant number"/>
+        <code id="QS" desc="Buyer&apos;s qualifier for size"/>
+        <code id="RC" desc="Returnable container number"/>
+        <code id="RN" desc="Release number"/>
+        <code id="RU" desc="Run number"/>
+        <code id="RY" desc="Record keeping of model year"/>
+        <code id="SA" desc="Supplier&apos;s article number"/>
+        <code id="SG" desc="Standard group of products (mixed assortment)"/>
+        <code id="SK" desc="SKU (Stock keeping unit)"/>
+        <code id="SN" desc="Serial number"/>
+        <code id="SRS" desc="RSK number"/>
+        <code id="SS" desc="Supplier&apos;s supplier article number"/>
+        <code id="ST" desc="Style number"/>
+        <code id="TG" desc="Transport group number"/>
+        <code id="UA" desc="Ultimate customer&apos;s article number"/>
+        <code id="UP" desc="UPC (Universal product code)"/>
+        <code id="VN" desc="Vendor item number"/>
+        <code id="VP" desc="Vendor&apos;s (seller&apos;s) part number"/>
+        <code id="VS" desc="Vendor&apos;s supplemental item number"/>
+        <code id="VX" desc="Vendor specification number"/>
+        <code id="ZZZ" desc="Mutually defined"/>
+    </data_element>
+    <data_element id="9005">
+        <code id="EXW" desc="Ex works"/>
+        <code id="FCA" desc="Free carrier"/>
+        <code id="FAS" desc="Free alongside ship"/>
+        <code id="FOB" desc="Free on board"/>
+        <code id="CFR" desc="Cost and freight"/>
+        <code id="CIF" desc="Cost, insurance and freight"/>
+        <code id="CPT" desc="Carriage paid to"/>
+        <code id="CIP" desc="Carriage and insurance paid to"/>
+        <code id="DAF" desc="Delivered at frontier"/>
+        <code id="DES" desc="Delivered ex ship"/>
+        <code id="DDU" desc="Delivered duty unpaid"/>
+        <code id="DEQ" desc="Delivered ex quay"/>
+        <code id="DDP" desc="Delivered dity paid"/>
+    </data_element>
+    <data_element id="8051">
+        <code id="20" desc="Main transport"/>
+    </data_element>
+    <data_element id="9034">
+        <code id="90" desc="Maritime transport"/>
+        <code id="20" desc="Rail transport"/>
+        <code id="30" desc="Road transport"/>
+        <code id="40" desc="Air transport"/>
+        <code id="50" desc="Multimodal transport"/>
+    </data_element>
+    <data_element id="8179">
+        <code id="23" desc="Trailer truck"/>
+        <code id="25" desc="Railroad car"/>
+        <code id="31" desc="Van"/>
+        <code id="25E" desc="Pivot at controlled temperature (EAN code)"/>
+        <code id="36E" desc="Track 70 quintals (EAN code)"/>
+        <code id="23E" desc="Pivot tarpaulin / tilt (EAN code)"/>
+        <code id="34E" desc="Pivot big volumes (EAN code)"/>
+        <code id="32E" desc="Swap (EAN code)"/>
+        <code id="37E" desc="Driving long (EAN code)"/>
+        <code id="35" desc="Van pivot"/>
+        <code id="43E" desc="Drive with hydraulic side (EAN code)"/>
+        <code id="38E" desc="Normal drive"/>
+    </data_element>
+    <data_element id="8101">
+        <code id="BS" desc="Buyer to shipper"/>
+        <code id="SB" desc="Shipper to buyer"/>
+    </data_element>
+    <data_element id="9058">
+        <code id="EN" desc="EAN/UCC code"/>
+        <code id="UP" desc="UPC code"/>
+    </data_element>
+    <data_element id="9067">
+        <code id="PCE" desc="Pieces"/>
+        <code id="KGM" desc="Chilograms"/>
+        <code id="MTR" desc="Meters"/>
+        <code id="MTK" desc="Square meters"/>
+        <code id="CMT" desc="Centimeters"/>
+        <code id="GRM" desc="Grams"/>
+        <code id="MLT" desc="Milliliters"/>
+        <code id="LTR" desc="Liters"/>
+        <code id="P1" desc="Percentage"/>
+        <code id="BX" desc="Composite article with multiple VAT"/>
+        <code id="CT" desc="Boxes"/>
+        <code id="CU" desc="Consumer unit"/>
+        <code id="TU" desc="Trade unit"/>
+    </data_element>
+    <data_element id="6411">
+        <code id="PCE" desc="Pieces"/>
+        <code id="KGM" desc="Chilograms"/>
+        <code id="MTR" desc="MEters"/>
+        <code id="MTK" desc="Square meters"/>
+        <code id="LTR" desc="Liters"/>
+    </data_element>
+    <data_element id="9062">
+        <code id="L01" desc="Sale"/>
+        <code id="L02" desc="Rendered"/>
+        <code id="L03" desc="Gift"/>
+        <code id="L04" desc="Empty"/>
+        <code id="L05" desc="Packaging"/>
+        <code id="L06" desc="Deposits"/>
+        <code id="L07" desc="Quantity difference"/>
+        <code id="L08" desc="Price difference"/>
+        <code id="L09" desc="Goods discount"/>
+        <code id="L10" desc="Credit dispute"/>
+        <code id="L11" desc="VAT credit"/>
+        <code id="L12" desc="Free sample"/>
+        <code id="L13" desc="Marketing goods (paper)"/>
+        <code id="L14" desc="Marketing goods (non paper)"/>
+    </data_element>
+    <data_element id="9057">
+        <code id="EN" desc="EAN/UCC code"/>
+        <code id="UP" desc="UPC code"/>
+        <code id="IN" desc="Distributor article code"/>
+        <code id="SA" desc="Buyer article code"/>
+    </data_element>
+    <data_element id="9067">
+        <code id="CT" desc="Cartons"/>
+        <code id="PCE" desc="Pieces"/>
+        <code id="KGM" desc="Chilograms"/>
+        <code id="MTR" desc="MEters"/>
+        <code id="MTK" desc="Square meters"/>
+        <code id="LTR" desc="Liters"/>
+        <code id="CU" desc="Consumer unit"/>
+        <code id="TU" desc="Trade unit"/>
+    </data_element>
+    <data_element id="9064">
+        <code id="" desc="Generic product"/>
+        <code id="BOV" desc="Bovine"/>
+        <code id="SUI" desc="Suine"/>
+        <code id="ITT" desc="Seafood"/>
+        <code id="ORT" desc="Fruit and vegetables"/>
+        <code id="LAT" desc="Dairy"/>
+        <code id="SAL" desc="Cold cuts"/>
+    </data_element>
+    <data_element id="9056">
+        <code id="946" desc="Unit price"/>
+    </data_element>
+    <data_element id="6069">
+        <code id="7" desc="Gross weight"/>
+        <code id="91" desc="Number of packages"/>
+        <code id="29" desc="Net weight"/>
+        <code id="33" desc="Total number of pallets"/>
+    </data_element>
+    <data_element id="6411">
+        <code id="PCE" desc="Pieces"/>
+        <code id="KGM" desc="Chilograms"/>
+        <code id="TNE" desc="Tons"/>
+        <code id="MTR" desc="Meters"/>
+        <code id="MTK" desc="Square meters"/>
+        <code id="LTR" desc="Liters"/>
+    </data_element>
+    <data_element id="9065">
+        <code id="" desc="Normal row"/>
+        <code id="P" desc="Promotional row"/>
+    </data_element>
+    <data_element id="9086">
+        <code id="IV" desc="Invoice"/>
+        <code id="ZZ" desc="Agreed between the parts"/>
+        <code id="CD" desc="Credit note"/>
+        <code id="DL" desc="Charge note"/>
+    </data_element>
+    <data_element id="9087">
+        <code id="VAT" desc="VAT"/>
+        <code id="I01" desc="Lubricant oil tax"/>
+        <code id="I02" desc="Excise Duty"/>
+        <code id="I03" desc="State mark"/>
+    </data_element>
+    <data_element id="9090">
+        <code id="A" desc="Discount"/>
+        <code id="C" desc="Charge"/>
+        <code id="N" desc="Special condition"/>
+    </data_element>
+    <data_element id="9093">
+        <code id="64E" desc="Prizes"/>
+        <code id="DI" desc="Discount"/>
+        <code id="FC" desc="Freight charge"/>
+        <code id="FI" desc="Finance charge"/>
+        <code id="IS" desc="Invoice services"/>
+        <code id="PAD" desc="Promotional allowance"/>
+        <code id="PC" desc="Packing"/>
+        <code id="RAD" desc="Returnable container"/>
+        <code id="SER" desc="Services"/>
+        <code id="TD" desc="Trade discount"/>
+        <code id="VAB" desc="Volume discount"/>
+        <code id="VAJ" desc="Environmental protection or disposable service"/>
+        <code id="X01" desc="Payment discount"/>
+        <code id="X13" desc="Amount subject to discount"/>
+    </data_element>
+    <data_element id="9099">
+        <code id="AAI" desc="CONAI note"/>
+        <code id="ZZZ" desc="Generic note"/>
+    </data_element>
+    <data_element id="9107">
+        <code id="R" desc="Refused"/>
+        <code id="A" desc="Accepted without modifications"/>
+        <code id="M" desc="Accepted with modifications"/>
+    </data_element>
+</data_elements>

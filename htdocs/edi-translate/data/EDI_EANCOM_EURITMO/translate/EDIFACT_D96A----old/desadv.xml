@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<translaterules>
+    <segment id="BGM" requires="BGM,DTM">
+        <data_element id="1001">
+            <code source="DESADV" value="351"/>
+        </data_element>
+        <data_element id="1004"/>
+        <data_element id="1225" default_value="9"/>
+        <data_element id="2005" default_value="137"/>
+        <data_element id="9014" becomes="2380"/>
+        <data_element id="2379" default_value="102"/>
+    </segment>
+    <segment id="RFF" requires="RFF,DTM">
+        <data_element id="1153"/>
+        <data_element id="1154"/>
+        <data_element id="9078" becomes="2380"/>
+        <data_element id="2005">
+        	<code source="11" value="137"/>
+        	<code source="358" value="132"/>
+        </data_element>
+    </segment>
+    <segment id="NAD" requires="NAD">
+        <data_element id="3035"/>
+        <data_element id="3039"/>
+        <data_element id="9053" becomes="3036"/>
+        <data_element id="9033" becomes="3042"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+    </segment>
+    <segment id="LIN" requires="LIN,IMD,QTY">
+        <!-- LIN -->
+        <data_element id="1082" srcpos="1"/>
+        <data_element id="7140"/>
+        <data_element id="7143"/>
+        <!-- IMD -->
+        <data_element id="7077" default_value="A"/>
+        <data_element id="9017" becomes="7009"/>
+        <!-- QTY -->
+        <data_element id="9062" becomes="6063">
+            <code source="L01" value="113"/>
+            <code source="L02" value="61"/>
+            <code source="L03" value="193"/>
+        </data_element>
+        <data_element id="6060" format="+12,3"/>
+        <data_element id="6411"/>
+    </segment>
+    <segment id="CNT" requires="CNT">
+        <data_element id="6069"/>
+        <data_element id="6066"/>
+        <data_element id="6411"/>
+    </segment>
+</translaterules>

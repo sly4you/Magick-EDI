@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<message>
+    <segment id="BGM" maxrepeat="1" required="true"/>
+    <segment id="NAS" maxrepeat="1" required="true"/>
+    <segment id="NAI" maxrepeat="1" required="true"/>
+    <segment id="NAP" maxrepeat="1"/>
+    <segment id="NAA" maxrepeat="1"/>
+    <segment id="NAT" maxrepeat="1"/>
+    <segment id="FTX" maxrepeat="5"/>
+    <segment id="PAT" maxrepeat="10"/>
+    <group id="SG1" maxrepeat="999">
+        <segment id="DET" maxrepeat="1" required="true"/>
+        <segment id="DES" maxrepeat="10"/>
+        <segment id="RFN" maxrepeat="10"/>
+        <segment id="TAX" maxrepeat="15"/>
+        <segment id="ALD" maxrepeat="15"/>
+        <segment id="NAD" maxrepeat="1"/>
+        <segment id="NAE" maxrepeat="1"/>
+        <segment id="NAR" maxrepeat="1"/>
+        <segment id="NAM" maxrepeat="1"/>
+        <segment id="NAF" maxrepeat="1"/>
+        <segment id="NAX" maxrepeat="1"/>
+        <segment id="FTL" maxrepeat="5"/>
+    </group>
+    <segment id="FTT" maxrepeat="5"/>
+    <segment id="ALT" maxrepeat="15"/>
+    <segment id="IVA" maxrepeat="10"/>
+    <segment id="TMA" maxrepeat="1" required="true"/>
+</message>

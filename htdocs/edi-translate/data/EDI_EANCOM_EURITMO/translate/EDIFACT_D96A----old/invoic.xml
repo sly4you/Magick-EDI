@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<translaterules>
+    <segment id="BGM" requires="BGM,DTM">
+        <data_element id="1001">
+            <code source="INVOIC" value="380"/>
+            <code source="NOTACC" value="381"/>
+            <code source="NOTADD" value="383"/>
+        </data_element>
+        <data_element id="1004"/>
+        <data_element id="1225" default_value="9"/>
+        <data_element id="2005" default_value="137"/>
+        <data_element id="9014" becomes="2380"/>
+        <data_element id="2379" default_value="102"/>
+    </segment>
+    <segment id="NAS" requires="NAD,RFF">
+        <data_element id="3035" default_value="BY"/>
+        <data_element id="9053" becomes="3036"/>
+        <data_element id="9033" becomes="3042"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+        <data_element id="9095" becomes="1154"/>
+        <data_element id="1153" default_value="VA"/>
+    </segment>
+    <segment id="NAI" requires="NAD,RFF">
+        <data_element id="3035" default_value="IV"/>
+        <data_element id="9053" becomes="3036"/>
+        <data_element id="9033" becomes="3042"/>
+        <data_element id="3164"/>
+        <data_element id="3229"/>
+        <data_element id="3251"/>
+        <data_element id="3207"/>
+        <data_element id="9095" becomes="1154"/>
+        <data_element id="1153" default_value="VA"/>
+    </segment>
+    <segment id="FTX" requires="CUX">
+        <data_element id="6347" default_value="2"/>
+        <data_element id="6345"/>
+    </segment>
+    <segment id="PAT" requires="PAT,DTM">
+        <data_element id="4279">
+            <code source="10E" value="1"/>
+            <code source="20" value="20"/>
+            <code source="21" value="21"/>
+            <code source="22" value="22"/>
+        </data_element>
+        <data_element id="2009"/>
+        <data_element id="2475"/>
+        <data_element id="2151"/>
+        <data_element id="2005" default_value="140"/>
+        <data_element id="9078" becomes="2380"/>
+        <data_element id="2379" default_value="102"/>
+        <data_element id="9081"/>
+    </segment>
+    <segment id="DET" requires="LIN,QTY,MOA">
+        <data_element id="1082" srcpos="1"/>
+        <data_element id="7140"/>
+        <data_element id="7143"/>
+        <!-- QTY -->
+        <data_element id="6063">
+            <code source="L01" value="47"/>
+            <code source="L02" value="61"/>
+            <code source="L03" value="193"/>
+        </data_element>
+        <data_element id="6060" format="+12,3"/>
+        <data_element id="9067" becomes="6411"/>
+
+    </segment>
+
+    <segment id="DES" maxrepeat="10"/>
+    <segment id="RFN" maxrepeat="10"/>
+    <segment id="TAX" maxrepeat="15"/>
+    <segment id="ALD" maxrepeat="15"/>
+    <segment id="NAD" maxrepeat="1"/>
+    <segment id="NAE" maxrepeat="1"/>
+    <segment id="NAR" maxrepeat="1"/>
+    <segment id="NAM" maxrepeat="1"/>
+    <segment id="NAF" maxrepeat="1"/>
+    <segment id="NAX" maxrepeat="1"/>
+    <segment id="FTL" maxrepeat="5"/>
+    <segment id="FTT" maxrepeat="5"/>
+    <segment id="ALT" maxrepeat="15"/>
+    <segment id="IVA" maxrepeat="10"/>
+    <segment id="TMA" maxrepeat="1" required="true"/>
+</translaterules>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<message>
+    <segment id="BGM" maxrepeat="1" required="true"/>
+    <segment id="DTM" maxrepeat="8"/>
+    <segment id="RFF" maxrepeat="10" required="true"/>
+    <segment id="NAD" maxrepeat="10" required="true"/>
+    <segment id="TOD" maxrepeat="10"/>
+    <segment id="TDT" maxrepeat="10"/>
+    <group id="SG1" maxrepeat="9999">
+        <segment id="LIN" maxrepeat="1" required="true"/>
+        <segment id="IMB" maxrepeat="1"/>
+        <segment id="RFR" maxrepeat="5"/>
+        <segment id="CCI" maxrepeat="9999"/>
+        <segment id="LOC" maxrepeat="1"/>
+    </group>
+    <segment id="CNT" maxrepeat="5"/>
+</message>

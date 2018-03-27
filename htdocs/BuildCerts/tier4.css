@@ -1,0 +1,118 @@
+/* -----------------------------------------------
+Title: Novell Tier4 Body Style
+Author: Jarid Love
+Modified: 12 Mar 2007
+----------------------------------------------- */
+
+/* include base style
+----------------------------------------------- */
+@import url(main.css);
+
+/* general styles
+----------------------------------------------- */
+a { color:#383A3B; }
+a:hover { color:#A6A9A9; text-decoration:underline; }
+h1 { font-size:150%; color:#565858; margin:0; padding:20px 0 28px 0;}
+h2 { font-size:100%; font-weight:normal; margin:-28px 0 15px 0; padding:0; }
+h3 { clear:both; color:#E00000; font-size:110%; border-bottom:1px solid #aaaaaa; padding-bottom:2px;  }
+h4 { font-size:110%; color:#252727; }
+h5 { font-size:90%; color:#6B6C6D; }
+p.flyspec { font-size:80%; font-style:italic; }
+p.summary { font-style:italic; text-align:center; }
+.first, .notop { margin-top:0; padding-top:0; }
+h3 a  { color:#e00000; text-decoration: none; }
+
+/* basic page structure
+----------------------------------------------- */
+#tier4 { color:#383A3B; background:url(/common/img/bg-body-pattern.gif) repeat 0px 77px; }
+#contentcontainer { background:#fff url(/common/img/bg-body-n.gif) no-repeat bottom left; padding-bottom:40px; width:770px; }
+#content { padding-left:154px; }
+#contenthead { font-size:75%; width:598px; }
+#mainbody { font-size:70%; min-height:320px; height:auto !important; height:100%; width:598px; }
+#tier4.promo #mainbody { width:442px; overflow:hidden; }
+#subnav { clear:both; }
+#subnav-contact { position:absolute; top:350px; left:0px; width:154px; }
+#subnav-contact h3, #subnav-tb, #subnav-contact-co { display:none; }
+#subnav-contact h4 { font-size:70%; padding:15px 0 0 0; margin:0 0 0 7px; }
+#subnav-contact ul { font-size:70%; list-style-type:none; padding:0; margin:2px 10px 0 0; line-height:110%; }
+#subnav-contact li { background:url(/common/img/bullets/bullet-link-list.gif) no-repeat 0px 1px; padding:0 0 3px 10px; margin:0 0 0 7px; }
+#subnav-contact a  { text-decoration:none; }
+#subnav-contact a:hover {  color:#000; text-decoration:underline; }
+body.expandable #tier4 { background-image:none; }
+body.expandable #mainbody, body.expandable #contentcontainer { width:auto; }
+body.expandable #content { padding-right:15px; min-width:598px; }
+body.expandable #hdr { background-image:none; }
+body.expandable #tier4.promo #mainbody { width:auto; overflow:visible; margin-right:174px; }
+body.expandable #tier4.promo #mainbody img { clear:left; }
+body.expandable h3 { clear:left; }
+
+/* promo area
+----------------------------------------------- */
+#contentpromo { float:right; width:154px; font-size:70%; }
+#contentpromo div.promo { border-top:2px solid #E3E5E5; padding:0 8px; margin-right:4px; }
+#contentpromo div.last { border-bottom:2px solid #E3E5E5; }
+#contentpromo b { color:#E00000; }
+#contentpromo strong{ color:#252727; }
+#contentpromo a { text-decoration:none; }
+#contentpromo ul ul { margin:0; padding:0; }
+#contentpromo ul ul li { margin-left:15px; padding-left:0; }
+
+/* left nav promo area
+----------------------------------------------- */
+p.lnav-promo { font-size:70%; background:#ffffff; border-top:1px solid #cbcbcb; border-bottom:1px solid #cbcbcb; padding:56px 0 8px 0; margin:15px 0 1em 0; width:138px;}
+p.lnav-promo a { display:block; padding:0 8px; text-decoration:none; }
+#subnav p.lnav-promo a:hover { text-decoration:underline; color:#000000; }
+p.lnav-promo strong, p.lnav-promo b { color:#e00000; font-weight:bold; }
+
+/* breadcrumb
+----------------------------------------------- */
+#breadcrumb { display:none; }
+
+/* special link treatment
+----------------------------------------------- */
+ul.links a, p.link a { text-decoration:none; color:#383A3B; }
+ul.links a:hover, p.link a:hover { color:#000; text-decoration:underline; }
+ul.links { margin-left:0; padding:0 0 0 18px; list-style-image:url(/img/n_arrows_grey.gif); }
+p.link img { border:0px; vertical-align:middle;}
+
+/* tabs layout
+----------------------------------------------- */
+.tabs { clear:both; padding-top:20px; margin-right:8px; }
+.tab { clear:both; border-top:1px solid #565858; padding-right:172px; }
+.tab-head { float:left; padding:3px 12px; margin-right:3px; cursor:pointer; background-color:#EEF0F0; }
+div.tabs div.selected { background-color:#252727; color:#FFF; cursor:default; }
+
+/* 2 and 4 column layout
+----------------------------------------------- */
+.columns2, .columns4 { padding:0; width:616px; }
+#tier4 .standalone { padding-top:0px; }
+.columns2 .col1, .columns2 .col2 { width:308px; float:left; }
+.columns4 .col1, .columns4 .col2, .columns4 .col3, .columns4 .col4 { width:154px; float:left; }
+.columns4 h3 { color:#565858; font-size:95%; border-bottom:1px solid #565858; margin:0 18px 0 0; padding-bottom:4px; }
+.columns4 h3 b { display:block; background:#FFF url(/common/img/bullets/bullet-link-heading2.gif) no-repeat 0px 4px; padding-left:10px; position:relative; left:-10px; }
+.columns4 p b { font-weight:normal; font-size:110%; color:#6B6C6D; }
+.columns4 a:hover b { color:#333; }
+.columns2 p, .columns4 p { margin:0; padding:10px 18px 1.2em 0; }
+.columns2 li, .columns4 li { padding-right:18px; }
+.columns2 h3 { margin-right:12px; }
+#tier3 .columns4 ul.links { list-style-type:none; list-style-image:none; padding:0; margin:10px 10px 0 0; line-height:110%; }
+#tier3 .columns4 ul.links li { background:url(/common/img/bullets/bullet-link-list.gif) no-repeat 0px 1px; padding:0 0 2px 10px; margin:0; }
+#tier3 .columns4 ul.links a:hover { text-decoration:underline; }
+
+/* icon list link treatment 
+----------------------------------------------- */
+#iconlist{ list-style-type:none; margin:0px; padding:0px; }
+li.iconlist_item, li.iconlist_item_last{ display:inline; font-weight:bold; }
+li.iconlist_item a, li.iconlist_item_last a { display:block; background-repeat:no-repeat; background-position:0px -4px; padding:0px 0px 7px 45px; text-decoration:none; }
+li.iconlist_item a:hover, li.iconlist_item_last a:hover { text-decoration:underline; }
+li.iconlist_item span{ border-bottom:1px solid #E3E5E5; padding-bottom:7px; }
+li.iconlist_item span, li.iconlist_item_last span{ display:block; font-weight:normal; }
+
+/* extra classes
+----------------------------------------------- */
+pre.code { color:#565858; border: 1px solid #565858; padding:10px 0; width:596px; background-color: #f2f2f2; font-size: 10pt; overflow:auto; }
+
+/* legacy
+----------------------------------------------- */
+.leadCopy a { text-decoration:none; }
+
